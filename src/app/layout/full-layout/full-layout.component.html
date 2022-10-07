@@ -1,0 +1,15 @@
+<div>
+  <app-sidebar [visibleSidebar]="visibleSidebar"></app-sidebar>
+</div>
+<div>
+  <app-header
+    [visibleSidebar]="visibleSidebar"
+    (showSidebar)="showSidebar()"
+  ></app-header>
+</div>
+<div [ngClass]="visibleSidebar ? 'sidebar-container': 'container'">
+  <router-outlet></router-outlet>
+</div>
+<div [ngClass]="visibleSidebar ? 'sidebar-container': 'container'">
+  <app-footer></app-footer>
+</div>

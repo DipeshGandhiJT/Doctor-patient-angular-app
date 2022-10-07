@@ -1,0 +1,20 @@
+.p-sidebar {
+  background: rgb(5, 68, 104);
+}
+
+.sidebar-menu {
+  .logo-container {
+    display: flex;
+    height: 60px;
+    width: 100%;
+    border-radius: 7px;
+    align-items: center;
+    font-family: "Poppins";
+
+    .logo {
+      height: 33px;
+      width: 33px;
+      margin-left: 10px;
+    }
+  }
+}

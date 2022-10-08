@@ -1,5 +1,6 @@
 import { Component, Input, OnInit, ViewEncapsulation } from "@angular/core";
 import { TranslateService } from "@ngx-translate/core";
+import { Router } from '@angular/router';
 
 @Component({
   selector: "app-sidebar",
@@ -10,7 +11,11 @@ import { TranslateService } from "@ngx-translate/core";
 export class SidebarComponent implements OnInit {
   menuItems: any[] = [];
   @Input() visibleSidebar: boolean = true;
-  constructor(public translate: TranslateService) {}
+
+  constructor(
+    public translate: TranslateService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.menuItems = [
@@ -22,5 +27,27 @@ export class SidebarComponent implements OnInit {
       },
       { index: 2, label: "OPD", icon: "pi pi-th-large" },
     ];
+    this.getSelectedMenu();
+  }
+
+  onClickMenuItem(item: any) {
+    let navigateToComponent = (item.target.innerText).toLowerCase();
+    navigateToComponent = navigateToComponent.replace(/ +/g, "");
+    this.router.navigate([`${navigateToComponent}`]).then((response) => {
+      this.getSelectedMenu();
+    });
+  }
+
+  getSelectedMenu() {
+    let activeRoutes = this.router.url.split("/")[1];
+    const index = this.menuItems.findIndex((i: any) => activeRoutes?.toLowerCase() == i.label.toLowerCase());
+    this.menuItems = this.menuItems.map((item: any) => {
+      const route = item.label.toLowerCase().replace(/ +/g, "");;
+      if (activeRoutes == route) {
+        return item[index] = { ...item, styleClass: 'active-menu' };
+      } else {
+        return item[index] = { index: item.index, label: item.label, icon: item.icon };
+      }
+    });
   }
 }

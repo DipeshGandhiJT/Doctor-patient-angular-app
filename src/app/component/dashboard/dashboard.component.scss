@@ -1,0 +1,25 @@
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start !important;
+  margin: 50px 10px 35px 75px;
+  grid-column-gap: 63px;
+  grid-row-gap: 40px;
+  height: 28%;
+  .card {
+    width: 18rem;
+    transition-duration: 0.2s;
+    .card:hover {
+      transform: scale(1.02);
+      transition: 0.3s ease-in-out;
+    }
+    .card-title {
+      text-align: center;
+      font-size: 27px;
+    }
+    .card-text {
+      margin: 40px 108px 50px 98px;
+      font-size: 80px;
+    }
+  }
+}

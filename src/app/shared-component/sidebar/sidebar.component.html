@@ -6,6 +6,6 @@
     [modal]="false"
   >
     <p-divider></p-divider>
-    <p-megaMenu [model]="menuItems" orientation="'vertical'"></p-megaMenu>
+    <p-megaMenu [model]="menuItems" orientation="'vertical'" (click)="onClickMenuItem($event)"></p-megaMenu>
   </p-sidebar>
 </div>

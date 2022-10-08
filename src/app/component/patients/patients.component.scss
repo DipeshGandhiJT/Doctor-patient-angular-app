@@ -1,0 +1,12 @@
+.client-container {
+    margin-top: 2%;
+    padding: 15px;
+    .filter-add-section {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 1%;
+        .form-control {
+            width: 50%;
+        }
+    }
+}

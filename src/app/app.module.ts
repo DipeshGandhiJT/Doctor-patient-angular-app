@@ -6,21 +6,31 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { FormsModule } from '@angular/forms';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { PatientsComponent } from './component/patients/patients.component';
+import { OpdComponent } from './component/opd/opd.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
 }
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [
+    AppComponent,
+    PatientsComponent,
+    OpdComponent
+  ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     TableModule,
     AppRoutingModule,
     NgbModule,
+    FormsModule,
+    Ng2SearchPipeModule,
     HttpClientModule,
     TranslateModule.forRoot({
       loader: {

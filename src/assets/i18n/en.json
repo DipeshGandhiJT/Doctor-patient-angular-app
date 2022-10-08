@@ -1,9 +1,8 @@
 {
   "global": {
     "dashboard": "Dashboard",
-    "patients": "Patients",
     "clients": "Clients",
-    "opd": "OPD",
+    "client": "Client",
     "consulting": "Consulting"
   }
 }

@@ -1,0 +1,17 @@
+.patient-details {
+    margin-top: 2%;
+    padding: 15px;
+    .filter-add-section {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 1%;
+        .form-control {
+            width: 50%;
+        }
+    }
+    .p-button {
+        color: #fff;
+        background: #bfc0c7;
+        border: 1px solid #bfc0c7;
+    }
+}

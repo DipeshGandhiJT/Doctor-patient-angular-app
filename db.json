@@ -1,0 +1,156 @@
+{
+  "clients": [
+    {
+      "id": 1,
+      "name": "Yash",
+      "age": "40",
+      "phoneNumber": "4578546697",
+      "location": "Surat",
+      "gender": "male",
+      "email": "yash@gmail.com",
+      "visits": [
+        {
+          "date": "05/12/2021",
+          "illness": "Dengue",
+          "prescription": "Amlodipine"
+        },
+        {
+          "date": "10/06/2022",
+          "illness": "Viral fever",
+          "prescription": "Azithromycin"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Parth",
+      "age": "25",
+      "phoneNumber": "7546258852",
+      "location": "Navsari",
+      "gender": "male",
+      "email": "parth@gmail.com",
+      "visits": [
+        {
+          "date": "20/11/2021",
+          "illness": "Typhoid",
+          "prescription": "Amitriptyline"
+        },
+        {
+          "date": "5/02/2022",
+          "illness": "Viral fever",
+          "prescription": "Azithromycin"
+        },
+        {
+          "date": "14/08/2022",
+          "illness": "Diarrhea",
+          "prescription": "Ibuprofen"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Rahul",
+      "age": "27",
+      "phoneNumber": "789456123",
+      "location": "Nasik",
+      "gender": "male",
+      "email": "rahul@gmail.com",
+      "visits": [
+        {
+          "date": "05/12/2021",
+          "illness": "Dengue",
+          "prescription": "Amlodipine"
+        },
+        {
+          "date": "10/06/2022",
+          "illness": "Viral fever",
+          "prescription": "Azithromycin"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Rohan",
+      "age": "25",
+      "phoneNumber": "956842137",
+      "location": "Baroda",
+      "gender": "male",
+      "email": "rohan@gmail.com",
+      "visits": [
+        {
+          "date": "05/12/2021",
+          "illness": "Dengue",
+          "prescription": "Amlodipine"
+        },
+        {
+          "date": "10/06/2022",
+          "illness": "Viral fever",
+          "prescription": "Azithromycin"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Charmi",
+      "age": "26",
+      "phoneNumber": "7485961230",
+      "location": "Nasik",
+      "gender": "female",
+      "email": "charmi@gmail.com",
+      "visits": [
+        {
+          "date": "05/12/2021",
+          "illness": "Dengue",
+          "prescription": "Amlodipine"
+        },
+        {
+          "date": "10/06/2022",
+          "illness": "Viral fever",
+          "prescription": "Azithromycin"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Poojan",
+      "age": "20",
+      "phoneNumber": "95175364285",
+      "location": "Surat",
+      "gender": "male",
+      "email": "poojan@gmail.com",
+      "visits": [
+        {
+          "date": "05/12/2021",
+          "illness": "Dengue",
+          "prescription": "Amlodipine"
+        },
+        {
+          "date": "10/06/2022",
+          "illness": "Viral fever",
+          "prescription": "Azithromycin"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "name": "Prabhat",
+      "age": "32",
+      "phoneNumber": "42588546697",
+      "location": "Valsad",
+      "gender": "male",
+      "email": "prabhat@gmail.com",
+      "visits": [
+        {
+          "date": "05/12/2021",
+          "illness": "Dengue",
+          "prescription": "Amlodipine"
+        },
+        {
+          "date": "10/06/2022",
+          "illness": "Viral fever",
+          "prescription": "Azithromycin"
+        }
+      ]
+    }
+  ]
+}

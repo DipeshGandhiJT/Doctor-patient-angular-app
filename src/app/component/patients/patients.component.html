@@ -9,26 +9,150 @@
       />
     </div>
     <div>
-      <button type="button" pButton class="p-button">Add</button>
+      <button type="button" pButton class="p-button" (click)="open(content)">Add</button>
     </div>
   </div>
   <table class="table table-striped container-fluid col-12">
     <thead>
       <tr>
-        <th>FirstName</th>
+        <th>Name</th>
         <th>Age</th>
         <th>Phone Number</th>
-        <th>Loction</th>
+        <th>Email</th>
+        <th>Location</th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let item of clients | filter: searchedText">
-        <td>{{ item.name }}</td>
-        <td>{{ item.age }}</td>
-        <td>{{ item.phonenumber }}</td>
-        <td>{{ item.location }}</td>
-        <button style="background: #0d6efd; color: white">details</button>
+      <tr *ngFor="let client of clients | filter: searchedText">
+        <td>{{ client.name }}</td>
+        <td>{{ client.age }}</td>
+        <td>{{ client.phoneNumber }}</td>
+        <td>{{ client.email }}</td>
+        <td>{{ client.location }}</td>
+        <td>
+          <button pButton class="p-button" (click)="openDetails(client.id)">
+            Details
+          </button>
+        </td>
       </tr>
     </tbody>
   </table>
+
+  <!-- Form modal to add patient details-->
+  <ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Add Patient details</h4>
+      <button
+        type="button"
+        class="btn-close"
+        aria-label="Close"
+        (click)="modal.dismiss('Cross click')"
+      ></button>
+    </div>
+    <div class="modal-body">
+      <form [formGroup]="clientForm">
+        <div class="col-md-12">
+          <div class="card-body text-black">
+            <div class="col-md-12 mb-4">
+              <div class="form-outline">
+                <label class="form-label">Name</label>
+                <input type="text" class="form-control form-control-lg" formControlName="name" />
+              </div>
+            </div>
+
+            <div class="col-md-12 mb-4">
+              <label class="form-label" for="form3Example8">Address</label>
+              <div class="form-outline">
+                <input
+                  type="text"
+                  id="form3Example8"
+                  class="form-control form-control-lg"
+                  formControlName="location"
+                />
+              </div>
+            </div>
+
+            <div
+              class="col-md-12 d-md-flex justify-content-start align-items-center mb-4"
+            >
+              <h6 class="mb-0 me-4">Gender:</h6>
+
+              <div class="form-check form-check-inline mb-0 me-4">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  formControlName="gender"
+                  id="femaleGender"
+                  value="option1"
+                />
+                <label class="form-check-label" for="femaleGender"
+                  >Female</label
+                >
+              </div>
+
+              <div class="form-check form-check-inline mb-0 me-4">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  formControlName="gender"
+                  id="maleGender"
+                  value="option2"
+                />
+                <label class="form-check-label" for="maleGender">Male</label>
+              </div>
+
+              <div class="form-check form-check-inline mb-0 me-4">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  formControlName="gender"
+                  id="otherGender"
+                  value="option3"
+                />
+                <label class="form-check-label" for="otherGender">Other</label>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-12 mb-4">
+                <label class="form-label">DOB</label>
+                <input type="date" class="form-control form-control-lg" formControlName="dob" />
+              </div>
+            </div>
+
+            <div class="form-outline mb-4">
+              <label class="form-label" for="form3Example97">Email ID</label>
+              <input
+                type="email"
+                id="form3Example97"
+                class="form-control form-control-lg"
+                formControlName="email"
+              />
+            </div>
+
+            <div class="form-outline mb-4">
+              <label class="form-label" for="phoneNumber">Contact Number</label>
+              <input
+                type="number"
+                id="phoneNumber"
+                class="form-control form-control-lg"
+                formControlName="phoneNumber"
+              />
+            </div>
+
+            <div class="d-flex justify-content-end pt-3">
+              <button type="button" class="btn btn-light btn-lg" (click)="resetDetails()">
+                Reset all
+              </button>
+              <button type="button" (click)="submitDetails()" class="btn btn-warning btn-lg ms-2"
+                [disabled]="!clientForm.valid">
+                Submit form
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </ng-template>
 </div>

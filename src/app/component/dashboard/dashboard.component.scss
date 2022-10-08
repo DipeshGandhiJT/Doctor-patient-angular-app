@@ -7,8 +7,17 @@
   grid-row-gap: 40px;
   height: 28%;
   .card {
-    width: 18rem;
+    width: 15rem;
+    height: 15rem;
     transition-duration: 0.2s;
+    border: none;
+    box-shadow: 0 8px 8px 0 rgb(0 0 0 / 20%);
+    .card-body {
+      background-color: #dee4ff;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
     .card:hover {
       transform: scale(1.02);
       transition: 0.3s ease-in-out;
@@ -18,8 +27,8 @@
       font-size: 27px;
     }
     .card-text {
-      margin: 40px 108px 50px 98px;
-      font-size: 80px;
+      text-align: center;
+      font-size: 40px;
     }
   }
 }

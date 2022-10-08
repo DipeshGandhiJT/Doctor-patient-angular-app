@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MegaMenuModule } from 'primeng/megamenu';
 import { SidebarModule } from 'primeng/sidebar';
-import { DividerModule } from 'primeng/divider';
 
 import { SharedComponentRoutingModule } from './shared-component-routing.module';
 import { TableComponent } from './table/table.component';
@@ -24,7 +23,6 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     SharedComponentRoutingModule,
     MegaMenuModule,
     SidebarModule,
-    DividerModule,
   ],
   exports: [
     TableComponent,

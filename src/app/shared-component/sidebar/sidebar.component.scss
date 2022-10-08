@@ -1,9 +1,10 @@
 .p-sidebar {
-  background: rgb(5, 68, 104);
+  background: #eef0f4;
 }
 
 .p-sidebar-left {
   width: 16rem !important;
+  border: none;
 }
 
 .sidebar-menu {
@@ -26,9 +27,24 @@
     border: none;
   }
   .p-megamenu {
-    background: #4c4c4c;
       .active-menu {
-          background: #4c4c4c;
+        background: #1d4e87;
+        color: #fff;
+        .p-menuitem-icon, .p-menuitem-text {
+          color: #fff !important;
+          font-weight: bold;
+        }
       }
+    .p-megamenu-root-list > .p-menuitem > .p-menuitem-link {
+      .p-menuitem-icon, .p-menuitem-text {
+        color: #1d4e87;
+        font-weight: bold;
+      }
+      &:not(.p-disabled):hover {
+        background: #1d4e87;
+        color: #fff;
+      }
+    }
+   
   }
 }

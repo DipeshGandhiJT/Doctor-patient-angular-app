@@ -25,7 +25,7 @@ export class SidebarComponent implements OnInit {
         label: this.translate.instant("global.clients"),
         icon: "pi pi-users",
       },
-      { index: 2, label: "OPD", icon: "pi pi-th-large" },
+      { index: 2, label: "Consulting", icon: "pi pi-th-large" },
     ];
     this.getSelectedMenu();
   }

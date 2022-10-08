@@ -12,8 +12,9 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PatientsComponent } from './component/patients/patients.component';
-import { OpdComponent } from './component/opd/opd.component';
+import { ConsultingComponent } from './component/opd/consulting.component';
 import { PatientDetailsComponent } from './component/patients/patient-details/patient-details.component';
+import { ConsultingDetailsComponent } from './component/opd/consulting-details/consulting-details.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -22,8 +23,9 @@ export function HttpLoaderFactory(http: HttpClient) {
   declarations: [
     AppComponent,
     PatientsComponent,
-    OpdComponent,
-    PatientDetailsComponent
+    ConsultingComponent,
+    PatientDetailsComponent,
+    ConsultingDetailsComponent
   ],
   imports: [
     BrowserModule,

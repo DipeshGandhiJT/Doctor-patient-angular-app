@@ -10,14 +10,22 @@
       "email": "yash@gmail.com",
       "consulting": [
         {
-          "date": "05/12/2021",
+          "date": "2021-12-05",
           "illness": "Dengue",
-          "prescription": "Amlodipine"
+          "prescription": "Amlodipine",
+          "description": ""
         },
         {
-          "date": "10/06/2022",
+          "date": "2022-10-06",
           "illness": "Viral fever",
-          "prescription": "Azithromycin"
+          "prescription": "Azithromycin",
+          "description": ""
+        },
+        {
+          "date": "2022-06-06",
+          "illness": "Viral fever",
+          "prescription": "Azithromycin",
+          "description": ""
         }
       ]
     },
@@ -31,19 +39,22 @@
       "email": "parth@gmail.com",
       "consulting": [
         {
-          "date": "20/11/2021",
+          "date": "2021-11-20",
           "illness": "Typhoid",
-          "prescription": "Amitriptyline"
+          "prescription": "Amitriptyline",
+          "description": ""
         },
         {
-          "date": "5/02/2022",
+          "date": "2022-02-05",
           "illness": "Viral fever",
-          "prescription": "Azithromycin"
+          "prescription": "Azithromycin",
+          "description": ""
         },
         {
-          "date": "14/08/2022",
+          "date": "2022-08-14",
           "illness": "Diarrhea",
-          "prescription": "Ibuprofen"
+          "prescription": "Ibuprofen",
+          "description": ""
         }
       ]
     },
@@ -57,14 +68,16 @@
       "email": "rahul@gmail.com",
       "consulting": [
         {
-          "date": "05/12/2021",
+          "date": "2021-12-05",
           "illness": "Dengue",
-          "prescription": "Amlodipine"
+          "prescription": "Amlodipine",
+          "description": ""
         },
         {
-          "date": "10/06/2022",
+          "date": "2022-06-10",
           "illness": "Viral fever",
-          "prescription": "Azithromycin"
+          "prescription": "Azithromycin",
+          "description": ""
         }
       ]
     },
@@ -78,14 +91,16 @@
       "email": "rohan@gmail.com",
       "consulting": [
         {
-          "date": "05/12/2021",
+          "date": "2021-12-05",
           "illness": "Dengue",
-          "prescription": "Amlodipine"
+          "prescription": "Amlodipine",
+          "description": ""
         },
         {
-          "date": "10/06/2022",
+          "date": "2022-10-06",
           "illness": "Viral fever",
-          "prescription": "Azithromycin"
+          "prescription": "Azithromycin",
+          "description": ""
         }
       ]
     },
@@ -99,14 +114,16 @@
       "email": "charmi@gmail.com",
       "consulting": [
         {
-          "date": "05/12/2021",
+          "date": "2021-12-05",
           "illness": "Dengue",
-          "prescription": "Amlodipine"
+          "prescription": "Amlodipine",
+          "description": ""
         },
         {
-          "date": "10/06/2022",
+          "date": "2022-10-06",
           "illness": "Viral fever",
-          "prescription": "Azithromycin"
+          "prescription": "Azithromycin",
+          "description": ""
         }
       ]
     },
@@ -120,14 +137,16 @@
       "email": "poojan@gmail.com",
       "consulting": [
         {
-          "date": "05/12/2021",
+          "date": "2021-12-05",
           "illness": "Dengue",
-          "prescription": "Amlodipine"
+          "prescription": "Amlodipine",
+          "description": ""
         },
         {
-          "date": "10/06/2022",
+          "date": "2022-10-06",
           "illness": "Viral fever",
-          "prescription": "Azithromycin"
+          "prescription": "Azithromycin",
+          "description": ""
         }
       ]
     },
@@ -141,48 +160,18 @@
       "email": "prabhat@gmail.com",
       "consulting": [
         {
-          "date": "05/12/2021",
+          "date": "2021-12-06",
           "illness": "Dengue",
-          "prescription": "Amlodipine"
+          "prescription": "Amlodipine",
+          "description": ""
         },
         {
-          "date": "10/06/2022",
+          "date": "2022-10-10",
           "illness": "Viral fever",
-          "prescription": "Azithromycin"
+          "prescription": "Azithromycin",
+          "description": ""
         }
       ]
-    }
-  ],
-  "consulting": [
-    {
-      "date": "05/12/2021",
-      "illness": "Dengue",
-      "prescription": "Amlodipine",
-      "clientId": "1"
-    },
-    {
-      "date": "10/06/2022",
-      "illness": "Viral fever",
-      "prescription": "Azithromycin",
-      "clientId": "1"
-    },
-    {
-      "date": "20/11/2021",
-      "illness": "Typhoid",
-      "prescription": "Amitriptyline",
-      "clientId": "2"
-    },
-    {
-      "date": "5/02/2022",
-      "illness": "Viral fever",
-      "prescription": "Azithromycin",
-      "clientId": "2"
-    },
-    {
-      "date": "14/08/2022",
-      "illness": "Diarrhea",
-      "prescription": "Ibuprofen",
-      "clientId": "2"
     }
   ]
 }

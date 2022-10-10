@@ -1,31 +1,37 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import axios from 'axios';
+import { Component, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
+import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
+import axios from "axios";
 
 @Component({
-  selector: 'app-consulting',
-  templateUrl: './consulting.component.html',
-  styleUrls: ['./consulting.component.scss']
+  selector: "app-consulting",
+  templateUrl: "./consulting.component.html",
+  styleUrls: ["./consulting.component.scss"],
 })
 export class ConsultingComponent implements OnInit {
-
   searchedText: string = "";
-  consultings: any = [];
-  consultingForm: FormGroup | any;
+  sortedList: any = [];
 
-  constructor(
-    private modalService: NgbModal,
-    private formBuilder: FormBuilder,
-    private router: Router
-  ) {}
+  constructor(private modalService: NgbModal, private router: Router) {}
 
   ngOnInit(): void {
-    this.consultingForm = this.formBuilder.group({
-      date: ["", Validators.required],
-      illness: ["", Validators.required],
-      prescription: ["", Validators.required],
+    axios.get("http://localhost:3000/clients").then((res) => {
+      res.data.map((client: any) => {
+        client.consulting.map((consult: any) => {
+          this.sortedList.push({
+            id: client.id,
+            name: client.name,
+            date: consult.date,
+            illness: consult.illness,
+            prescription: consult.prescription,
+          });
+        });
+      });
+      this.sortedList = this.sortedList.sort((a: any, b: any) => {
+        const t1: any = new Date(a.date);
+        const t2: any = new Date(b.date);
+        return t2 - t1;
+      });
     });
   }
 
@@ -33,24 +39,10 @@ export class ConsultingComponent implements OnInit {
     this.modalService.open(item, { ariaLabelledBy: "modal-basic-title" });
   }
 
-  get consultingFormControl() {
-    return this.consultingForm.controls;
+  openDetails(item: any) {
+    const details = this.sortedList.find(
+      (c: any) => c.id == item.id && c.illness == item.illness
+    );
+    this.router.navigate([`clients/consulting/${1}`], { queryParams: details });
   }
-
-  submitDetails() {
-    let payload: any = this.consultingForm.value || {};
-    axios.post("http://localhost:3000/consulting", payload).then((res: any) => {
-      console.log("consulting-res-------", res);
-    });
-  }
-
-  resetDetails() {
-    this.consultingForm.reset();
-  }
-
-  openDetails(id: any) {
-    const consulting = this.consultings.find((c: any) => c.id == id);
-    this.router.navigate([`/consulting/${id}`], { queryParams: consulting });
-  }
-
 }

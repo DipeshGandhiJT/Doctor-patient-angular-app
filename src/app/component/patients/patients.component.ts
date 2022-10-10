@@ -14,6 +14,8 @@ interface Client {
   dob: string;
   phoneNumber: number;
   location: string;
+  gender: string;
+  email: string;
   consulting: object;
 }
 
@@ -60,11 +62,8 @@ export class PatientsComponent implements OnInit {
     var age_dt = new Date(diff_ms);
     const age = Math.abs(age_dt.getUTCFullYear() - 1970);
     payload.age = age;
-    console.log("submit-------", payload);
     axios.post("http://localhost:3000/clients", payload).then((res: any) => {
-      console.log("res-------", res);
-      // const { data } = res;
-      // this.clients.push(payload);
+      this.clients.push(res.data);
     });
   }
 
@@ -73,7 +72,12 @@ export class PatientsComponent implements OnInit {
   }
 
   openDetails(id: any) {
-    const client = this.clients.find((c) => c.id == id);
-    this.router.navigate([`/clients/${id}`], { queryParams: client });
+    const client: any = this.clients.find((c) => c.id == id);
+    const queryParams: any = {};
+    queryParams.myArray = JSON.stringify(client);
+    const params = {
+      queryParams
+    };
+    this.router.navigate([`/clients/${id}`], params);
   }
 }

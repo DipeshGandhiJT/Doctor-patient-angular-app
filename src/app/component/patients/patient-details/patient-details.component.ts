@@ -16,31 +16,32 @@ export class PatientDetailsComponent implements OnInit {
   data: any[] = [];
   consultingForm: FormGroup | any;
   client: any = {};
-  // clientId: any;
 
   constructor(
     public translate: TranslateService,
     private modalService: NgbModal,
     private router: Router,
-    private route: ActivatedRoute,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private activatedRoute: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
-    this.route.queryParams.subscribe(params => {
-      this.client = params;
-    });
-    // this.clientId = this.router.url.split('/')[2];
-    // Get id of client and get all visits(consulting) of that client
+    const myArray = this.activatedRoute.snapshot.queryParamMap.get('myArray');
+    if (myArray === null) {
+      this.client = new Array<string>();
+    } else {
+      this.client = JSON.parse(myArray);
+    }
     this.consultingForm = this.formBuilder.group({
       date: ["", Validators.required],
       illness: ["", Validators.required],
       prescription: ["", Validators.required],
+      description:  ["", Validators.required],
     });
   }
 
   openDetails(id: any) {
-    this.router.navigateByUrl(`/consulting/${id}`);
+    this.router.navigateByUrl(`clients/consulting/${this.client.id}`);
   }
 
   open(item: any) {
@@ -49,8 +50,11 @@ export class PatientDetailsComponent implements OnInit {
 
   submitDetails() {
     let payload: any = this.consultingForm.value || {};
-    axios.post("http://localhost:3000/consulting", payload).then((res: any) => {
-      console.log("res-------", res);
+    const consult = [ ...this.client.consulting, payload];
+    const client = { ...this.client, consulting: consult };
+    axios.patch(`http://localhost:3000/clients/${client.id}`, client).then((res: any) => {
+      this.client = res.data;
+      this.client.consulting = res.data.client.consulting
     });
   }
 

@@ -9,4 +9,5 @@ export class ConsultingModel extends JsonApiModel {
   @Attribute() date: string | undefined;
   @Attribute() illness: string | undefined;
   @Attribute() prescription: string | undefined;
+  @Attribute() description: string | undefined;
 }

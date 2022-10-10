@@ -1,6 +1,5 @@
-export namespace Patients {
-
-    export class getAllPatients {
-        static readonly type = '[Patients] getAllPatients';
-    }
+export namespace PatientsAction {
+  export class getAllPatients {
+    static readonly type = "[Patients] getAllPatients";
+  }
 }

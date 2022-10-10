@@ -9,7 +9,7 @@ interface Client {
   id: number;
   name: string;
   age: number;
-  dob: string,
+  dob: string;
   phoneNumber: number;
   location: string;
   visits: object;
@@ -52,19 +52,20 @@ export class PatientsComponent implements OnInit {
   }
 
   submitDetails() {
-    const payload = this.clientForm.value;    
+    const payload = this.clientForm.value;
     var diff_ms = Date.now() - new Date(payload.dob).getTime();
-    var age_dt = new Date(diff_ms); 
+    var age_dt = new Date(diff_ms);
     const age = Math.abs(age_dt.getUTCFullYear() - 1970);
     payload.age = age;
     this.clients.push(payload);
   }
-  
+
   resetDetails() {
     this.clientForm.reset();
   }
 
   openDetails(id: any) {
-    this.router.navigateByUrl(`/clients/${id}`);
+    const client = this.clients.find((c) => c.id == id);
+    this.router.navigate([`/clients/${id}`], { queryParams: client });
   }
 }

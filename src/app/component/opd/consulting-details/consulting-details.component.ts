@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-consulting-details',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ConsultingDetailsComponent implements OnInit {
 
-  constructor() { }
+  searchedText: string = "";
+  consulting: any = {};
+
+  constructor(
+    public translate: TranslateService,
+    private route: ActivatedRoute,
+  ) { }
 
   ngOnInit(): void {
+    this.route.queryParams.subscribe(params => {
+      this.consulting = params;
+    });
+    // Get id of client and get all visits(consulting) of that client
   }
 
 }

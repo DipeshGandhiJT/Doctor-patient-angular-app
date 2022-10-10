@@ -1,10 +1,17 @@
 <div class="patient-details">
   <h4>{{ "global.client" | translate }} Information</h4>
-  <p>Name: </p>
-  <p>Age: </p>
-  <p>Location: </p>
-  <p>Phone Number: </p>
-  <p *ngIf="false">Email: </p>
+  <div class="col-md-6" style="display: flex; justify-content: space-between;">
+    <p><b>Name:</b> {{client.name}}</p>
+    <p><b>Age:</b> {{client.age}}</p>
+  </div>
+  <div class="col-md-6" style="display: flex; justify-content: space-between;">
+    <p><b>Location:</b> {{client.location}}</p>
+    <p><b>Phone Number:</b> {{client.phoneNumber}}</p>
+  </div>
+  <div class="col-md-6" style="display: flex; justify-content: space-between;">
+    <p><b>Gender:</b> {{client.gender}}</p>
+    <p *ngIf="client.email"><b>Email:</b> {{client.email}}</p>
+  </div>
 
   <h4>List of {{ "global.consulting" | translate }}</h4>
 
@@ -34,13 +41,13 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let item of data | filter: searchedText">
+      <tr *ngFor="let item of client.consulting | filter: searchedText">
         <td>{{ item.date }}</td>
         <td>{{ item.illness }}</td>
         <td>{{ item.prescription }}</td>
         <td>
           <button pButton class="p-button" (click)="openDetails(item.id)">
-            View consuting
+            View consulting
           </button>
         </td>
       </tr>

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-consulting',
@@ -7,9 +10,44 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ConsultingComponent implements OnInit {
 
-  constructor() { }
+  searchedText: string = "";
+  consultings: any = [];
+  consultingForm: FormGroup | any;
+
+  constructor(
+    private modalService: NgbModal,
+    private formBuilder: FormBuilder,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
+    this.consultingForm = this.formBuilder.group({
+      date: ["", Validators.required],
+      illness: ["", Validators.required],
+      prescription: ["", Validators.required],
+    });
+  }
+
+  open(item: any) {
+    this.modalService.open(item, { ariaLabelledBy: "modal-basic-title" });
+  }
+
+  get consultingFormControl() {
+    return this.consultingForm.controls;
+  }
+
+  submitDetails() {
+    let payload: any = this.consultingForm.value || {};
+    this.consultings.push(payload);
+  }
+
+  resetDetails() {
+    this.consultingForm.reset();
+  }
+
+  openDetails(id: any) {
+    const consulting = this.consultings.find((c: any) => c.id == id);
+    this.router.navigate([`/consulting/${id}`], { queryParams: consulting });
   }
 
 }

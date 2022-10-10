@@ -8,7 +8,7 @@
       "location": "Surat",
       "gender": "male",
       "email": "yash@gmail.com",
-      "visits": [
+      "consulting": [
         {
           "date": "05/12/2021",
           "illness": "Dengue",
@@ -29,7 +29,7 @@
       "location": "Navsari",
       "gender": "male",
       "email": "parth@gmail.com",
-      "visits": [
+      "consulting": [
         {
           "date": "20/11/2021",
           "illness": "Typhoid",
@@ -55,7 +55,7 @@
       "location": "Nasik",
       "gender": "male",
       "email": "rahul@gmail.com",
-      "visits": [
+      "consulting": [
         {
           "date": "05/12/2021",
           "illness": "Dengue",
@@ -76,7 +76,7 @@
       "location": "Baroda",
       "gender": "male",
       "email": "rohan@gmail.com",
-      "visits": [
+      "consulting": [
         {
           "date": "05/12/2021",
           "illness": "Dengue",
@@ -97,7 +97,7 @@
       "location": "Nasik",
       "gender": "female",
       "email": "charmi@gmail.com",
-      "visits": [
+      "consulting": [
         {
           "date": "05/12/2021",
           "illness": "Dengue",
@@ -118,7 +118,7 @@
       "location": "Surat",
       "gender": "male",
       "email": "poojan@gmail.com",
-      "visits": [
+      "consulting": [
         {
           "date": "05/12/2021",
           "illness": "Dengue",
@@ -139,7 +139,7 @@
       "location": "Valsad",
       "gender": "male",
       "email": "prabhat@gmail.com",
-      "visits": [
+      "consulting": [
         {
           "date": "05/12/2021",
           "illness": "Dengue",

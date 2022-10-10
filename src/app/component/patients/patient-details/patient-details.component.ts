@@ -40,8 +40,10 @@ export class PatientDetailsComponent implements OnInit {
     });
   }
 
-  openDetails(id: any) {
-    this.router.navigateByUrl(`clients/consulting/${this.client.id}`);
+  openDetails(item: any) {
+    const queryParams: any = {};
+    queryParams.myArray = JSON.stringify(item);
+    this.router.navigate([`clients/consulting/${this.client.id}`], { queryParams });
   }
 
   open(item: any) {

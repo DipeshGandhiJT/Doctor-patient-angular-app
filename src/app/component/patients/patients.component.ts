@@ -75,9 +75,7 @@ export class PatientsComponent implements OnInit {
     const client: any = this.clients.find((c) => c.id == id);
     const queryParams: any = {};
     queryParams.myArray = JSON.stringify(client);
-    const params = {
-      queryParams
-    };
-    this.router.navigate([`/clients/${id}`], params);
+    this.router.navigate([`/clients/${id}`], { queryParams });
   }
 }
+ 

@@ -14,13 +14,16 @@ export class ConsultingDetailsComponent implements OnInit {
 
   constructor(
     public translate: TranslateService,
-    private route: ActivatedRoute,
+    private activatedRoute: ActivatedRoute,
   ) { }
 
   ngOnInit(): void {
-    this.route.queryParams.subscribe(params => {
-      this.consulting = params;
-    });
+    const myArray = this.activatedRoute.snapshot.queryParamMap.get('myArray');
+    if (myArray === null) {
+      this.consulting = new Array<string>();
+    } else {
+      this.consulting = JSON.parse(myArray);
+    }
   }
 
 }

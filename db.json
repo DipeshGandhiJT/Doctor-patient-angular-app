@@ -13,19 +13,19 @@
           "date": "2021-12-05",
           "illness": "Dengue",
           "prescription": "Amlodipine",
-          "description": ""
+          "description": "Had high fever. Diagnosed with dengue. Took 6 dose of bottles and cured successfully."
         },
         {
           "date": "2022-10-06",
           "illness": "Viral fever",
           "prescription": "Azithromycin",
-          "description": ""
+          "description": "Diagnosed with cold, cough and low fever"
         },
         {
-          "date": "2022-06-06",
+          "date": "2022-06-05",
           "illness": "Viral fever",
           "prescription": "Azithromycin",
-          "description": ""
+          "description": "Diagnosed with cold and low fever"
         }
       ]
     },
@@ -48,7 +48,7 @@
           "date": "2022-02-05",
           "illness": "Viral fever",
           "prescription": "Azithromycin",
-          "description": ""
+          "description": "Diagnosed with cold and low fever"
         },
         {
           "date": "2022-08-14",
@@ -77,7 +77,7 @@
           "date": "2022-06-10",
           "illness": "Viral fever",
           "prescription": "Azithromycin",
-          "description": ""
+          "description": "Diagnosed with cold and low fever"
         }
       ]
     },
@@ -100,7 +100,7 @@
           "date": "2022-10-06",
           "illness": "Viral fever",
           "prescription": "Azithromycin",
-          "description": ""
+          "description": "Diagnosed with cold and low fever"
         }
       ]
     },
@@ -123,7 +123,7 @@
           "date": "2022-10-06",
           "illness": "Viral fever",
           "prescription": "Azithromycin",
-          "description": ""
+          "description": "Diagnosed with cold and low fever"
         }
       ]
     },
@@ -146,7 +146,7 @@
           "date": "2022-10-06",
           "illness": "Viral fever",
           "prescription": "Azithromycin",
-          "description": ""
+          "description": "Diagnosed with cold and low fever"
         }
       ]
     },
@@ -169,7 +169,7 @@
           "date": "2022-10-10",
           "illness": "Viral fever",
           "prescription": "Azithromycin",
-          "description": ""
+          "description": "Diagnosed with cold and low fever"
         }
       ]
     }

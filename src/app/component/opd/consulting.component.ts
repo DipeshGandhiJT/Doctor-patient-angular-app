@@ -43,6 +43,8 @@ export class ConsultingComponent implements OnInit {
     const details = this.sortedList.find(
       (c: any) => c.id == item.id && c.illness == item.illness
     );
-    this.router.navigate([`clients/consulting/${1}`], { queryParams: details });
+    const queryParams: any = {};
+    queryParams.myArray = JSON.stringify(details);
+    this.router.navigate([`clients/consulting/${item.id}`], { queryParams });
   }
 }

@@ -6,7 +6,7 @@
       "age": "40",
       "phoneNumber": "4578546697",
       "location": "Surat",
-      "gender": "male",
+      "gender": "Male",
       "email": "yash@gmail.com",
       "consulting": [
         {
@@ -27,7 +27,7 @@
       "age": "25",
       "phoneNumber": "7546258852",
       "location": "Navsari",
-      "gender": "male",
+      "gender": "Male",
       "email": "parth@gmail.com",
       "consulting": [
         {
@@ -53,7 +53,7 @@
       "age": "27",
       "phoneNumber": "789456123",
       "location": "Nasik",
-      "gender": "male",
+      "gender": "Male",
       "email": "rahul@gmail.com",
       "consulting": [
         {
@@ -74,7 +74,7 @@
       "age": "25",
       "phoneNumber": "956842137",
       "location": "Baroda",
-      "gender": "male",
+      "gender": "Male",
       "email": "rohan@gmail.com",
       "consulting": [
         {
@@ -95,7 +95,7 @@
       "age": "26",
       "phoneNumber": "7485961230",
       "location": "Nasik",
-      "gender": "female",
+      "gender": "Female",
       "email": "charmi@gmail.com",
       "consulting": [
         {
@@ -116,7 +116,7 @@
       "age": "20",
       "phoneNumber": "95175364285",
       "location": "Surat",
-      "gender": "male",
+      "gender": "Male",
       "email": "poojan@gmail.com",
       "consulting": [
         {
@@ -137,7 +137,7 @@
       "age": "32",
       "phoneNumber": "42588546697",
       "location": "Valsad",
-      "gender": "male",
+      "gender": "Male",
       "email": "prabhat@gmail.com",
       "consulting": [
         {
@@ -151,6 +151,38 @@
           "prescription": "Azithromycin"
         }
       ]
+    }
+  ],
+  "consulting": [
+    {
+      "date": "05/12/2021",
+      "illness": "Dengue",
+      "prescription": "Amlodipine",
+      "clientId": "1"
+    },
+    {
+      "date": "10/06/2022",
+      "illness": "Viral fever",
+      "prescription": "Azithromycin",
+      "clientId": "1"
+    },
+    {
+      "date": "20/11/2021",
+      "illness": "Typhoid",
+      "prescription": "Amitriptyline",
+      "clientId": "2"
+    },
+    {
+      "date": "5/02/2022",
+      "illness": "Viral fever",
+      "prescription": "Azithromycin",
+      "clientId": "2"
+    },
+    {
+      "date": "14/08/2022",
+      "illness": "Diarrhea",
+      "prescription": "Ibuprofen",
+      "clientId": "2"
     }
   ]
 }

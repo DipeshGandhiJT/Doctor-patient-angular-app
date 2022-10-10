@@ -81,7 +81,7 @@
                 <button type="button" class="btn btn-light btn-lg" (click)="resetDetails()">
                   Reset all
                 </button>
-                <button type="button" (click)="submitDetails()" class="submit-button btn-lg ms-2"
+                <button type="button" (click)="submitDetails(); modal.dismiss('Cross click')" class="submit-button btn-lg ms-2"
                   [disabled]="!consultingForm.valid">
                   Submit form
                 </button>

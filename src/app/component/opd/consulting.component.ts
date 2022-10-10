@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import axios from 'axios';
 
 @Component({
   selector: 'app-consulting',
@@ -38,7 +39,9 @@ export class ConsultingComponent implements OnInit {
 
   submitDetails() {
     let payload: any = this.consultingForm.value || {};
-    this.consultings.push(payload);
+    axios.post("http://localhost:3000/consulting", payload).then((res: any) => {
+      console.log("consulting-res-------", res);
+    });
   }
 
   resetDetails() {

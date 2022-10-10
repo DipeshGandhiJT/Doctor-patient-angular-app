@@ -21,7 +21,6 @@ export class ConsultingDetailsComponent implements OnInit {
     this.route.queryParams.subscribe(params => {
       this.consulting = params;
     });
-    // Get id of client and get all visits(consulting) of that client
   }
 
 }

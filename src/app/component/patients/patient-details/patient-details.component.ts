@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { TranslateService } from '@ngx-translate/core';
+import axios from 'axios';
 
 @Component({
   selector: 'app-patient-details',
@@ -22,6 +23,7 @@ export class PatientDetailsComponent implements OnInit {
     private modalService: NgbModal,
     private router: Router,
     private route: ActivatedRoute,
+    private formBuilder: FormBuilder
   ) { }
 
   ngOnInit(): void {
@@ -30,6 +32,11 @@ export class PatientDetailsComponent implements OnInit {
     });
     // this.clientId = this.router.url.split('/')[2];
     // Get id of client and get all visits(consulting) of that client
+    this.consultingForm = this.formBuilder.group({
+      date: ["", Validators.required],
+      illness: ["", Validators.required],
+      prescription: ["", Validators.required],
+    });
   }
 
   openDetails(id: any) {
@@ -39,4 +46,16 @@ export class PatientDetailsComponent implements OnInit {
   open(item: any) {
     this.modalService.open(item, { ariaLabelledBy: "modal-basic-title" });
   }
+
+  submitDetails() {
+    let payload: any = this.consultingForm.value || {};
+    axios.post("http://localhost:3000/consulting", payload).then((res: any) => {
+      console.log("res-------", res);
+    });
+  }
+
+  resetDetails() {
+    this.consultingForm.reset();
+  }
+
 }

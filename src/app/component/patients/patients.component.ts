@@ -1,7 +1,9 @@
+import { HttpClient } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
+import axios from "axios";
 
 import clientsData from "../../../../db.json";
 
@@ -12,7 +14,7 @@ interface Client {
   dob: string;
   phoneNumber: number;
   location: string;
-  visits: object;
+  consulting: object;
 }
 
 @Component({
@@ -29,7 +31,8 @@ export class PatientsComponent implements OnInit {
   constructor(
     private modalService: NgbModal,
     private formBuilder: FormBuilder,
-    private router: Router
+    private router: Router,
+    private http: HttpClient
   ) {}
 
   ngOnInit(): void {
@@ -57,7 +60,12 @@ export class PatientsComponent implements OnInit {
     var age_dt = new Date(diff_ms);
     const age = Math.abs(age_dt.getUTCFullYear() - 1970);
     payload.age = age;
-    this.clients.push(payload);
+    console.log("submit-------", payload);
+    axios.post("http://localhost:3000/clients", payload).then((res: any) => {
+      console.log("res-------", res);
+      // const { data } = res;
+      // this.clients.push(payload);
+    });
   }
 
   resetDetails() {

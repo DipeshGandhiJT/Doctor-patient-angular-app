@@ -47,7 +47,7 @@ export class PatientDetailsComponent implements OnInit {
     this.getAllClient$?.pipe(takeUntil(this.destroyed$), distinctUntilChanged())
     .subscribe((data: any) => {
       const id: any = this.activatedRoute.snapshot.paramMap.get('id');
-      this.client = data && data[id];
+      this.client = data?.filter((d: any) => d.id == id)[0];
     });
   }
 

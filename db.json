@@ -54,7 +54,7 @@
           "date": "2022-08-14",
           "illness": "Diarrhea",
           "prescription": "Ibuprofen",
-          "description": ""
+          "description": "Stomach ache"
         },
         {
           "date": "2022-10-11",
@@ -98,31 +98,31 @@
       "consulting": [
         {
           "date": "2021-12-05",
-          "illness": "Dengue",
-          "prescription": "Amlodipine",
+          "illness": "Typhoid",
+          "prescription": "Amitriptyline",
           "description": ""
         },
         {
           "date": "2022-10-06",
-          "illness": "Viral fever",
-          "prescription": "Azithromycin",
-          "description": "Diagnosed with cold and low fever"
+          "illness": "Diarrhea",
+          "prescription": "Ibuprofen",
+          "description": ""
         }
       ]
     },
     {
       "id": 5,
-      "name": "Charmi",
+      "name": "Mary",
       "age": "26",
       "phoneNumber": "7485961230",
       "location": "Nasik",
       "gender": "Female",
-      "email": "charmi@gmail.com",
+      "email": "mary@gmail.com",
       "consulting": [
         {
           "date": "2021-12-05",
-          "illness": "Dengue",
-          "prescription": "Amlodipine",
+          "illness": "Typhoid",
+          "prescription": "Amitriptyline",
           "description": ""
         },
         {
@@ -135,12 +135,12 @@
     },
     {
       "id": 6,
-      "name": "Poojan",
+      "name": "John",
       "age": "20",
       "phoneNumber": "95175364285",
       "location": "Surat",
       "gender": "Male",
-      "email": "poojan@gmail.com",
+      "email": "john@gmail.com",
       "consulting": [
         {
           "date": "2021-12-05",
@@ -158,17 +158,17 @@
     },
     {
       "id": 7,
-      "name": "Prabhat",
+      "name": "David",
       "age": "32",
       "phoneNumber": "42588546697",
       "location": "Valsad",
       "gender": "Male",
-      "email": "prabhat@gmail.com",
+      "email": "david@gmail.com",
       "consulting": [
         {
           "date": "2021-12-06",
-          "illness": "Dengue",
-          "prescription": "Amlodipine",
+          "illness": "Typhoid",
+          "prescription": "Amitriptyline",
           "description": ""
         },
         {
@@ -180,21 +180,21 @@
       ]
     },
     {
-      "name": "Aagam",
+      "name": "Robert",
       "dob": "2000-10-14",
       "location": "Surat",
       "gender": "option1",
-      "email": "aagam@gmail.com",
+      "email": "robert@gmail.com",
       "phoneNumber": 7898562254,
       "age": 22,
       "id": 8
     },
     {
-      "name": "Mitali",
+      "name": "Sam",
       "dob": "2000-5-10",
       "location": "Surat",
       "gender": "option1",
-      "email": "mitali@gmail.com",
+      "email": "sam@gmail.com",
       "phoneNumber": 7548546652,
       "age": 22,
       "id": 9,
@@ -206,16 +206,6 @@
           "description": "Diagnosed with cold and cough"
         }
       ]
-    },
-    {
-      "name": "Rutva",
-      "dob": "1995-01-11",
-      "location": "Surat",
-      "gender": "option1",
-      "email": "rutva@gmail.com",
-      "phoneNumber": 745896625,
-      "age": 26,
-      "id": 10
     }
   ]
 }

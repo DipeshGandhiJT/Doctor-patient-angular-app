@@ -3,16 +3,14 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import { Select, Store } from "@ngxs/store";
-
-import { PatientsAction } from "../../store/patients/patients.action";
-import { PatientsState } from "../../store/patients/patients.state";
-import { PatientsModel } from "../../store/patients/patients.model";
 import {
   distinctUntilChanged,
   Observable,
   ReplaySubject,
   takeUntil,
 } from "rxjs";
+
+import { PatientsAction, PatientsModel, PatientsState } from 'src/app/store/patients';
 
 interface Client {
   id: number;

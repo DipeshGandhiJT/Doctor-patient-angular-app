@@ -55,6 +55,12 @@
           "illness": "Diarrhea",
           "prescription": "Ibuprofen",
           "description": ""
+        },
+        {
+          "date": "2022-10-11",
+          "illness": "Viral fever",
+          "prescription": "Azithromycin",
+          "description": "Diagnosed with cold and low fever"
         }
       ]
     },
@@ -172,6 +178,44 @@
           "description": "Diagnosed with cold and low fever"
         }
       ]
+    },
+    {
+      "name": "Aagam",
+      "dob": "2000-10-14",
+      "location": "Surat",
+      "gender": "option1",
+      "email": "aagam@gmail.com",
+      "phoneNumber": 7898562254,
+      "age": 22,
+      "id": 8
+    },
+    {
+      "name": "Mitali",
+      "dob": "2000-5-10",
+      "location": "Surat",
+      "gender": "option1",
+      "email": "mitali@gmail.com",
+      "phoneNumber": 7548546652,
+      "age": 22,
+      "id": 9,
+      "consulting": [
+        {
+          "date": "2022-10-11",
+          "illness": "Cough",
+          "prescription": "Azithromycin",
+          "description": "Diagnosed with cold and cough"
+        }
+      ]
+    },
+    {
+      "name": "Rutva",
+      "dob": "1995-01-11",
+      "location": "Surat",
+      "gender": "option1",
+      "email": "rutva@gmail.com",
+      "phoneNumber": 745896625,
+      "age": 26,
+      "id": 10
     }
   ]
 }

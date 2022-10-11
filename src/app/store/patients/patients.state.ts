@@ -3,8 +3,7 @@ import { HttpClient } from "@angular/common/http";
 import { Action, Selector, State, StateContext, Store } from "@ngxs/store";
 import { tap } from "rxjs";
 
-import { PatientsModel } from "./patients.model";
-import { PatientsAction } from "./patients.action";
+import { PatientsAction, PatientsModel } from 'src/app/store/patients';
 
 export interface PatientStateModel {
   loader: boolean | false;

@@ -63,7 +63,7 @@ export class PatientDetailsComponent implements OnInit {
 
   submitDetails() {
     let payload: any = this.consultingForm.value || {};
-    const consult = [ ...this.client?.consulting, payload];
+    const consult = [ ...this.client?.consulting || [], payload];
     const client = { ...this.client, consulting: consult };
     this.store.dispatch(new PatientsAction.updatePatients(client, client.id));
   }

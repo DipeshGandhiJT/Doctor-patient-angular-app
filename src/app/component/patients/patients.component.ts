@@ -53,8 +53,8 @@ export class PatientsComponent implements OnInit {
       dob: ["", Validators.required],
       location: ["", Validators.required],
       gender: ["", Validators.required],
-      email: [""],
-      phoneNumber: ["", Validators.required],
+      email: ["", Validators.pattern(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)],
+      phoneNumber: ["", [Validators.required, Validators.pattern(/^\d{10}$/)]],
     });
   }
 
@@ -72,6 +72,7 @@ export class PatientsComponent implements OnInit {
   }
 
   get clientFormControl() {
+    console.log("this.clientForm", this.clientForm);
     return this.clientForm.controls;
   }
 

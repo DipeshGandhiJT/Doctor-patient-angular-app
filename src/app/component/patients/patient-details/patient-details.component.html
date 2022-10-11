@@ -125,7 +125,7 @@
               <button
                 type="button"
                 (click)="submitDetails(); modal.dismiss('Cross click')"
-                class="submit-button btn-lg ms-2"
+                [ngClass]="consultingForm.valid ? 'submit-button btn-lg ms-2' : 'submit-button-invalid'"
                 [disabled]="!consultingForm.valid"
               >
                 Submit form

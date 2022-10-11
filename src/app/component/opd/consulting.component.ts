@@ -46,7 +46,7 @@ export class ConsultingComponent implements OnInit {
             });
           });
         });
-        this.sortedList = this.sortedList.sort((a: any, b: any) => {
+        this.sortedList.sort((a: any, b: any) => {
           const t1: any = new Date(a.date);
           const t2: any = new Date(b.date);
           return t2 - t1;

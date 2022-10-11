@@ -21,3 +21,11 @@
     border: none;
     border-radius: 5px;
 }
+.submit-button-invalid {
+    color: #fff;
+    background: #1d4e87;
+    border: none;
+    border-radius: 5px;
+    opacity: 0.8;
+    cursor: default;
+}

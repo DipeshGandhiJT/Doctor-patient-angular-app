@@ -3,10 +3,10 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { TranslateService } from '@ngx-translate/core';
-import { Store } from '@ngxs/store';
-import axios from 'axios';
+import { Select, Store } from '@ngxs/store';
+import { distinctUntilChanged, Observable, ReplaySubject, takeUntil } from 'rxjs';
 
-import { PatientsAction } from 'src/app/store/patients';
+import { PatientsAction, PatientsModel, PatientsState } from 'src/app/store/patients';
 
 @Component({
   selector: 'app-patient-details',
@@ -16,10 +16,13 @@ import { PatientsAction } from 'src/app/store/patients';
 export class PatientDetailsComponent implements OnInit {
 
   searchedText: string = "";
-  data: any[] = [];
   consultingForm: FormGroup | any;
   client: any = {};
-
+  @Select(PatientsState.getPatients) getAllClient$:
+  | Observable<PatientsModel[]>
+  | undefined;
+  private destroyed$: ReplaySubject<boolean> = new ReplaySubject(1);
+  
   constructor(
     public translate: TranslateService,
     private modalService: NgbModal,
@@ -30,17 +33,21 @@ export class PatientDetailsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    const myArray = this.activatedRoute.snapshot.queryParamMap.get('myArray');
-    if (myArray === null) {
-      this.client = new Array<string>();
-    } else {
-      this.client = JSON.parse(myArray);
-    }
+    this.getPatients();
     this.consultingForm = this.formBuilder.group({
       date: ["", Validators.required],
       illness: ["", Validators.required],
       prescription: ["", Validators.required],
       description:  ["", Validators.required],
+    });
+  }
+
+  getPatients() {
+    this.store.dispatch(PatientsAction.getAllPatients);
+    this.getAllClient$?.pipe(takeUntil(this.destroyed$), distinctUntilChanged())
+    .subscribe((data: any) => {
+      const id: any = this.activatedRoute.snapshot.paramMap.get('id');
+      this.client = data && data[id];
     });
   }
 
@@ -56,7 +63,7 @@ export class PatientDetailsComponent implements OnInit {
 
   submitDetails() {
     let payload: any = this.consultingForm.value || {};
-    const consult = [ ...this.client.consulting, payload];
+    const consult = [ ...this.client?.consulting, payload];
     const client = { ...this.client, consulting: consult };
     this.store.dispatch(new PatientsAction.updatePatients(client, client.id));
   }

@@ -37,7 +37,7 @@ export class ConsultingComponent implements OnInit {
       ?.pipe(takeUntil(this.destroyed$), distinctUntilChanged())
       .subscribe((data: any) => {
         data?.map((client: any) => {
-          client.consulting.map((consult: any) => {
+          client?.consulting?.map((consult: any) => {
             this.sortedList.push({
               id: client.id,
               name: client.name,

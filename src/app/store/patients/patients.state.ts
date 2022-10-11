@@ -1,25 +1,27 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
-import { Action, Selector, State, StateContext } from "@ngxs/store";
+import { Action, Selector, State, StateContext, Store } from "@ngxs/store";
+import { tap } from "rxjs";
 
 import { PatientsModel } from "./patients.model";
 import { PatientsAction } from "./patients.action";
 
 export interface PatientStateModel {
-  loader: boolean | undefined;
+  loader: boolean | false;
   patients: PatientsModel[] | undefined;
 }
 
+const baseURL = "http://localhost:3000/clients";
 @State<PatientStateModel>({
   name: "patientsState",
   defaults: {
-    loader: undefined,
+    loader: false,
     patients: undefined,
   },
 })
 @Injectable()
 export class PatientsState {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private store: Store) {}
 
   @Selector()
   static getPatients(state: PatientsModel) {
@@ -34,15 +36,55 @@ export class PatientsState {
   }: StateContext<PatientStateModel>) {
     const state = getState();
     patchState({ ...state, loader: true });
-    // return this.http.get(environment.baseUrl + "/patients").pipe(
-    //   tap((res: any) => {
-    //     const { data } = res;
-    //     if (data) {
-    //       patchState({ ...state, loader: false, patients: data });
-    //     } else {
-    //       patchState({ ...state, loader: false, patients: [] });
-    //     }
-    //   })
-    // );
+    return this.http.get(baseURL).pipe(
+      tap((res: any) => {
+        if (res) {
+          patchState({ ...state, loader: false, patients: res });
+        } else {
+          patchState({ ...state, loader: false, patients: [] });
+        }
+      })
+    );
+  }
+
+  @Action(PatientsAction.addPatients)
+  addPatients(
+    { getState, setState, patchState }: StateContext<PatientsModel>,
+    { payload }: PatientsAction.addPatients
+  ) {
+    const state = getState();
+    patchState({ ...state, loader: true });
+    return this.http.post(baseURL, payload).pipe(
+      tap({
+        next: (res: any) => {
+          if (res) {
+            this.store.dispatch(PatientsAction.getAllPatients);
+          }
+        },
+        error: (err: any) => {
+          // setState({ ...state, loader: false });
+        },
+      })
+    );
+  }
+
+  @Action(PatientsAction.updatePatients)
+  updateFacility(
+    { getState, setState, patchState }: StateContext<PatientsModel>,
+    { payload, id }: PatientsAction.updatePatients
+  ) {
+    const state = getState();
+    return this.http.patch(baseURL + `/${id}`, payload).pipe(
+      tap({
+        next: (res: any) => {
+          if (res) {
+            this.store.dispatch(PatientsAction.getAllPatients);
+          }
+        },
+        error: (err: any) => {
+          patchState({ ...state, loader: false });
+        },
+      })
+    );
   }
 }

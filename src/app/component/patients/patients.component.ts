@@ -1,11 +1,18 @@
-import { HttpClient } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
-import axios from "axios";
+import { Select, Store } from "@ngxs/store";
 
-import clientsData from "../../../../db.json";
+import { PatientsAction } from "../../store/patients/patients.action";
+import { PatientsState } from "../../store/patients/patients.state";
+import { PatientsModel } from "../../store/patients/patients.model";
+import {
+  distinctUntilChanged,
+  Observable,
+  ReplaySubject,
+  takeUntil,
+} from "rxjs";
 
 interface Client {
   id: number;
@@ -26,18 +33,23 @@ interface Client {
 })
 export class PatientsComponent implements OnInit {
   searchedText: string = "";
-  // clients: Client[] = clientsData.clients;
-  clients = clientsData.clients;
+  clients: Client[] = [];
   clientForm: FormGroup | any;
+
+  @Select(PatientsState.getPatients) getAllClient$:
+    | Observable<PatientsModel[]>
+    | undefined;
+  private destroyed$: ReplaySubject<boolean> = new ReplaySubject(1);
 
   constructor(
     private modalService: NgbModal,
     private formBuilder: FormBuilder,
     private router: Router,
-    private http: HttpClient
+    private store: Store
   ) {}
 
   ngOnInit(): void {
+    this.getPatients();
     this.clientForm = this.formBuilder.group({
       name: ["", Validators.required],
       dob: ["", Validators.required],
@@ -46,6 +58,15 @@ export class PatientsComponent implements OnInit {
       email: [""],
       phoneNumber: ["", Validators.required],
     });
+  }
+
+  getPatients() {
+    this.store.dispatch(PatientsAction.getAllPatients);
+    this.getAllClient$
+      ?.pipe(takeUntil(this.destroyed$), distinctUntilChanged())
+      .subscribe((data: any) => {
+        this.clients = data;
+      });
   }
 
   open(item: any) {
@@ -62,9 +83,7 @@ export class PatientsComponent implements OnInit {
     var age_dt = new Date(diff_ms);
     const age = Math.abs(age_dt.getUTCFullYear() - 1970);
     payload.age = age;
-    axios.post("http://localhost:3000/clients", payload).then((res: any) => {
-      this.clients.push(res.data);
-    });
+    this.store.dispatch(new PatientsAction.addPatients(payload));
   }
 
   resetDetails() {
@@ -78,4 +97,3 @@ export class PatientsComponent implements OnInit {
     this.router.navigate([`/clients/${id}`], { queryParams });
   }
 }
- 

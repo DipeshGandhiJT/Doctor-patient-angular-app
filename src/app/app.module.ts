@@ -15,6 +15,7 @@ import { PatientsComponent } from './component/patients/patients.component';
 import { ConsultingComponent } from './component/opd/consulting.component';
 import { PatientDetailsComponent } from './component/patients/patient-details/patient-details.component';
 import { ConsultingDetailsComponent } from './component/opd/consulting-details/consulting-details.component';
+import { StoreModule } from './store';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -37,6 +38,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     ReactiveFormsModule,
     Ng2SearchPipeModule,
     HttpClientModule,
+    StoreModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

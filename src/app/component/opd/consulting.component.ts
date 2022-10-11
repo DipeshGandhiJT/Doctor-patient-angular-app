@@ -1,8 +1,17 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
-import axios from "axios";
+import { Select, Store } from "@ngxs/store";
+import {
+  distinctUntilChanged,
+  Observable,
+  ReplaySubject,
+  takeUntil,
+} from "rxjs";
 
+import { PatientsAction } from "../../store/patients/patients.action";
+import { PatientsState } from "../../store/patients/patients.state";
+import { PatientsModel } from "../../store/patients/patients.model";
 @Component({
   selector: "app-consulting",
   templateUrl: "./consulting.component.html",
@@ -11,28 +20,39 @@ import axios from "axios";
 export class ConsultingComponent implements OnInit {
   searchedText: string = "";
   sortedList: any = [];
+  @Select(PatientsState.getPatients) getAllClient$:
+    | Observable<PatientsModel[]>
+    | undefined;
+  private destroyed$: ReplaySubject<boolean> = new ReplaySubject(1);
 
-  constructor(private modalService: NgbModal, private router: Router) {}
+  constructor(
+    private modalService: NgbModal,
+    private router: Router,
+    private store: Store
+  ) {}
 
   ngOnInit(): void {
-    axios.get("http://localhost:3000/clients").then((res) => {
-      res.data.map((client: any) => {
-        client.consulting.map((consult: any) => {
-          this.sortedList.push({
-            id: client.id,
-            name: client.name,
-            date: consult.date,
-            illness: consult.illness,
-            prescription: consult.prescription,
+    this.store.dispatch(PatientsAction.getAllPatients);
+    this.getAllClient$
+      ?.pipe(takeUntil(this.destroyed$), distinctUntilChanged())
+      .subscribe((data: any) => {
+        data?.map((client: any) => {
+          client.consulting.map((consult: any) => {
+            this.sortedList.push({
+              id: client.id,
+              name: client.name,
+              date: consult.date,
+              illness: consult.illness,
+              prescription: consult.prescription,
+            });
           });
         });
+        this.sortedList = this.sortedList.sort((a: any, b: any) => {
+          const t1: any = new Date(a.date);
+          const t2: any = new Date(b.date);
+          return t2 - t1;
+        });
       });
-      this.sortedList = this.sortedList.sort((a: any, b: any) => {
-        const t1: any = new Date(a.date);
-        const t2: any = new Date(b.date);
-        return t2 - t1;
-      });
-    });
   }
 
   open(item: any) {

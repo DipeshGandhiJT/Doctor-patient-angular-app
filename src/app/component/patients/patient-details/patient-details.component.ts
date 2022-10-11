@@ -3,7 +3,10 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { TranslateService } from '@ngx-translate/core';
+import { Store } from '@ngxs/store';
 import axios from 'axios';
+
+import { PatientsAction } from 'src/app/store/patients';
 
 @Component({
   selector: 'app-patient-details',
@@ -22,7 +25,8 @@ export class PatientDetailsComponent implements OnInit {
     private modalService: NgbModal,
     private router: Router,
     private formBuilder: FormBuilder,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private store: Store
   ) { }
 
   ngOnInit(): void {
@@ -54,10 +58,7 @@ export class PatientDetailsComponent implements OnInit {
     let payload: any = this.consultingForm.value || {};
     const consult = [ ...this.client.consulting, payload];
     const client = { ...this.client, consulting: consult };
-    axios.patch(`http://localhost:3000/clients/${client.id}`, client).then((res: any) => {
-      this.client = res.data;
-      this.client.consulting = res.data.client.consulting
-    });
+    this.store.dispatch(new PatientsAction.updatePatients(client, client.id));
   }
 
   resetDetails() {

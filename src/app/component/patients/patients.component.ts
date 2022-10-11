@@ -72,7 +72,6 @@ export class PatientsComponent implements OnInit {
   }
 
   get clientFormControl() {
-    console.log("this.clientForm", this.clientForm);
     return this.clientForm.controls;
   }
 

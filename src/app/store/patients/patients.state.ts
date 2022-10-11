@@ -36,14 +36,19 @@ export class PatientsState {
     const state = getState();
     patchState({ ...state, loader: true });
     return this.http.get(baseURL).pipe(
-      tap((res: any) => {
+      tap({
+        next: (res: any) => {
         if (res) {
           patchState({ ...state, loader: false, patients: res });
         } else {
           patchState({ ...state, loader: false, patients: [] });
         }
-      })
-    );
+      },
+      error: (err: any) => {
+        patchState({ ...state, loader: false });
+      }
+    })
+  );
   }
 
   @Action(PatientsAction.addPatients)
@@ -61,7 +66,7 @@ export class PatientsState {
           }
         },
         error: (err: any) => {
-          // setState({ ...state, loader: false });
+          patchState({ ...state, loader: false });
         },
       })
     );

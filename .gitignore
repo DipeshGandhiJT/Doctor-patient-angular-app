@@ -6,3 +6,5 @@ dist/
 
 #Angular
 .angular
+
+src/assets/vendor

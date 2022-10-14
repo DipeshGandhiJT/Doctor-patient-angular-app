@@ -1,33 +1,27 @@
 <div class="patient-details">
   <h4>{{ "global.client" | translate }} Information</h4>
-  <div class="col-md-6" style="display: flex; justify-content: space-between">
-    <p><b>Name:</b> {{ client?.name }}</p>
-    <p><b>Age:</b> {{ client?.age }}</p>
+  <div class="col-md-8" style="display: flex; justify-content: space-between">
+    <p class="col-md-4"><b>Name:</b> {{ client?.name }}</p>
+    <p class="col-md-4"><b>Age:</b> {{ client?.age }}</p>
   </div>
-  <div class="col-md-6" style="display: flex; justify-content: space-between">
-    <p><b>Location:</b> {{ client?.location }}</p>
-    <p><b>Phone Number:</b> {{ client?.phoneNumber }}</p>
+  <div class="col-md-8" style="display: flex; justify-content: space-between">
+    <p class="col-md-4"><b>Location:</b> {{ client?.location }}</p>
+    <p class="col-md-4"><b>Phone Number:</b> {{ client?.phoneNumber }}</p>
   </div>
-  <div class="col-md-6" style="display: flex; justify-content: space-between">
-    <p><b>Gender:</b> {{ client?.gender }}</p>
-    <p *ngIf="client?.email"><b>Email:</b> {{ client?.email }}</p>
+  <div class="col-md-8" style="display: flex; justify-content: space-between">
+    <p class="col-md-4"><b>Gender:</b> {{ client?.gender }}</p>
+    <p class="col-md-4" *ngIf="client?.email"><b>Email:</b> {{ client?.email }}</p>
   </div>
 
-  <h4>List of {{ "global.consulting" | translate }}</h4>
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 25px;">
+    <h4>List of {{ "global.consulting" | translate }}</h4>
 
-  <div class="filter-add-section">
-    <div class="form-group col-md-4">
-      <input
-        type="text"
-        class="form-control"
-        placeholder="Search"
-        [(ngModel)]="searchedText"
-      />
-    </div>
-    <div>
-      <button type="button" pButton class="p-button" (click)="open(content)">
-        Add Consulting
-      </button>
+    <div class="filter-add-section">
+      <div class="col-md-12">
+        <button type="button" pButton class="p-button" (click)="open(content)">
+          Add Consulting
+        </button>
+      </div>
     </div>
   </div>
 
@@ -45,7 +39,9 @@
         <td>{{ item.date }}</td>
         <td>{{ item.illness }}</td>
         <td>{{ item.prescription }}</td>
-        <td>
+        <td class="actions-icons">
+          <i class="bi bi-pencil-fill"></i>
+          <i class="bi bi-trash-fill"></i>
           <button pButton class="p-button" (click)="openDetails(item)">
             View consulting
           </button>
@@ -94,6 +90,20 @@
 
             <div class="col-md-12 mb-4">
               <div class="form-outline">
+                <label class="form-label"> Illness Description</label>
+                <input
+                  type="text"
+                  class="form-control form-control-lg"
+                  formControlName="illnessDescription"
+                />
+              </div>
+            </div>
+
+            <!-- <quill-editor class="content-editor" [placeholder]="''"  [modules]="quillConfiguration"
+            [styles]="{'min-height': '120px'}"></quill-editor> -->
+
+            <div class="col-md-12 mb-4">
+              <div class="form-outline">
                 <label class="form-label">Prescription</label>
                 <input
                   type="text"
@@ -105,11 +115,11 @@
 
             <div class="col-md-12 mb-4">
               <div class="form-outline">
-                <label class="form-label">Description</label>
+                <label class="form-label">Prescription Description</label>
                 <input
                   type="text"
                   class="form-control form-control-lg"
-                  formControlName="description"
+                  formControlName="pDescription"
                 />
               </div>
             </div>

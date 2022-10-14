@@ -37,6 +37,7 @@ export class PatientsComponent implements OnInit {
   @Select(PatientsState.getPatients) getAllClient$:
     | Observable<PatientsModel[]>
     | undefined;
+  @Select(PatientsState.searchClients) searchClients$:  Observable<String> | undefined;
   private destroyed$: ReplaySubject<boolean> = new ReplaySubject(1);
 
   constructor(
@@ -48,6 +49,7 @@ export class PatientsComponent implements OnInit {
 
   ngOnInit(): void {
     this.getPatients();
+    this.getSearchedText();
     this.clientForm = this.formBuilder.group({
       name: ["", Validators.required],
       dob: ["", Validators.required],
@@ -58,11 +60,25 @@ export class PatientsComponent implements OnInit {
     });
   }
 
+  getSearchedText() {
+    this.searchClients$?.pipe(takeUntil(this.destroyed$), distinctUntilChanged())
+    .subscribe((data: any) => {
+      this.searchedText = data;
+    });
+  }
+  
   getPatients() {
     this.store.dispatch(PatientsAction.getAllPatients);
     this.getAllClient$
       ?.pipe(takeUntil(this.destroyed$), distinctUntilChanged())
       .subscribe((data: any) => {
+        data?.map((item: any) => {
+          var diff_ms = Date.now() - new Date(item.dob).getTime();
+          var age_dt = new Date(diff_ms);
+          const age = Math.abs(age_dt.getUTCFullYear() - 1970);
+          item.age = age;
+        });
+        console.log("data==", data);
         this.clients = data;
       });
   }
@@ -77,10 +93,6 @@ export class PatientsComponent implements OnInit {
 
   submitDetails() {
     const payload = this.clientForm.value;
-    var diff_ms = Date.now() - new Date(payload.dob).getTime();
-    var age_dt = new Date(diff_ms);
-    const age = Math.abs(age_dt.getUTCFullYear() - 1970);
-    payload.age = age;
     this.store.dispatch(new PatientsAction.addPatients(payload));
   }
 
@@ -90,5 +102,14 @@ export class PatientsComponent implements OnInit {
 
   openDetails(id: any) {
     this.router.navigate([`/clients/${id}`]);
+  }
+
+  editRecord(payload: any) {
+    // Open form dialog with edited data entered
+    // this.store.dispatch(new PatientsAction.updatePatients(payload, payload.id));
+  }
+
+  deleteRecord(id: any) {
+    this.store.dispatch(new PatientsAction.deletePatients(id));
   }
 }

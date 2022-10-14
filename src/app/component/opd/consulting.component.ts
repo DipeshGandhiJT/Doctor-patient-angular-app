@@ -22,6 +22,7 @@ export class ConsultingComponent implements OnInit {
   @Select(PatientsState.getPatients) getAllClient$:
     | Observable<PatientsModel[]>
     | undefined;
+  @Select(PatientsState.searchClients) searchClients$:  Observable<String> | undefined;
   private destroyed$: ReplaySubject<boolean> = new ReplaySubject(1);
 
   constructor(
@@ -52,6 +53,14 @@ export class ConsultingComponent implements OnInit {
           return t2 - t1;
         });
       });
+    this.getSearchedText();
+  }
+
+  getSearchedText() {
+    this.searchClients$?.pipe(takeUntil(this.destroyed$), distinctUntilChanged())
+    .subscribe((data: any) => {
+      this.searchedText = data;
+    });
   }
 
   open(item: any) {

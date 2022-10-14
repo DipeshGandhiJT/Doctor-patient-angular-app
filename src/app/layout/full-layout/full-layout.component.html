@@ -5,11 +5,12 @@
   <app-header
     [visibleSidebar]="visibleSidebar"
     (showSidebar)="showSidebar()"
+    (changeText)="changeText($event)"
   ></app-header>
 </div>
 <div [ngClass]="visibleSidebar ? 'sidebar-container': 'container'">
   <router-outlet></router-outlet>
 </div>
-<!-- <div [ngClass]="visibleSidebar ? 'sidebar-container': 'container'">
+<div [ngClass]="visibleSidebar ? 'sidebar-container': 'container'">
   <app-footer></app-footer>
-</div> -->
+</div>

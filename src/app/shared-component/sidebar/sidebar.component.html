@@ -1,10 +1,31 @@
-<div class="sidebar-menu">
+<div class="sidebar">
   <p-sidebar
     appearance="vertical-bar"
     [visible]="visibleSidebar"
     [showCloseIcon]="false"
     [modal]="false"
   >
-    <p-megaMenu [model]="menuItems" orientation="'vertical'" (click)="onClickMenuItem($event)"></p-megaMenu>
+    <ul class="sidebar-nav" id="sidebar-nav">
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="/dashboard">
+          <i class="bi bi-card-list"></i>
+          <span>Dashboard</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="/clients">
+          <i class="bi bi-box-arrow-in-right"></i>
+          <span>Clients</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="/consulting">
+          <i class="bi bi-dash-circle"></i>
+          <span>Consulting</span>
+        </a>
+      </li>
+    </ul>
   </p-sidebar>
 </div>

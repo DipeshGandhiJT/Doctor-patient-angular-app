@@ -1,50 +1,13 @@
 .p-sidebar {
-  background: #eef0f4;
+  background: transparent;
 }
 
 .p-sidebar-left {
   width: 16rem !important;
   border: none;
+  z-index: 1 !important;
 }
 
-.sidebar-menu {
-  .logo-container {
-    display: flex;
-    height: 60px;
-    width: 100%;
-    border-radius: 7px;
-    align-items: center;
-    font-family: "Poppins";
-
-    .logo {
-      height: 33px;
-      width: 33px;
-      margin-left: 10px;
-    }
-  }
-  .p-megamenu.p-component {
-    background: transparent;
-    border: none;
-  }
-  .p-megamenu {
-      .active-menu {
-        background: #1d4e87;
-        color: #fff;
-        .p-menuitem-icon, .p-menuitem-text {
-          color: #fff !important;
-          font-weight: bold;
-        }
-      }
-    .p-megamenu-root-list > .p-menuitem > .p-menuitem-link {
-      .p-menuitem-icon, .p-menuitem-text {
-        color: #1d4e87;
-        font-weight: bold;
-      }
-      &:not(.p-disabled):hover {
-        background: #1d4e87;
-        color: #fff;
-      }
-    }
-   
-  }
+.p-sidebar-content {
+  padding-top: 40px !important;
 }

@@ -8,6 +8,17 @@ import { distinctUntilChanged, Observable, ReplaySubject, takeUntil } from 'rxjs
 
 import { PatientsAction, PatientsModel, PatientsState } from 'src/app/store/patients';
 
+// export const QuillConfiguration = {
+//   toolbar: [
+//     ['bold', 'italic', 'underline', 'strike'],
+//     ['blockquote', 'code-block'],
+//     [{ list: 'ordered' }, { list: 'bullet' }],
+//     [{ header: [1, 2, 3, 4, 5, 6, false] }],
+//     [{ color: [] }, { background: [] }],
+//     ['link'],
+//     ['clean'],
+//   ],
+// }
 @Component({
   selector: 'app-patient-details',
   templateUrl: './patient-details.component.html',
@@ -18,11 +29,12 @@ export class PatientDetailsComponent implements OnInit {
   searchedText: string = "";
   consultingForm: FormGroup | any;
   client: any = {};
+  // quillConfiguration = QuillConfiguration
   @Select(PatientsState.getPatients) getAllClient$:
   | Observable<PatientsModel[]>
   | undefined;
   private destroyed$: ReplaySubject<boolean> = new ReplaySubject(1);
-  
+
   constructor(
     public translate: TranslateService,
     private modalService: NgbModal,
@@ -37,8 +49,9 @@ export class PatientDetailsComponent implements OnInit {
     this.consultingForm = this.formBuilder.group({
       date: ["", Validators.required],
       illness: ["", Validators.required],
+      illnessDescription:  ["", Validators.required],
       prescription: ["", Validators.required],
-      description:  ["", Validators.required],
+      pDescription:  ["", Validators.required],
     });
   }
 
@@ -48,6 +61,10 @@ export class PatientDetailsComponent implements OnInit {
     .subscribe((data: any) => {
       const id: any = this.activatedRoute.snapshot.paramMap.get('id');
       this.client = data?.filter((d: any) => d.id == id)[0];
+      var diff_ms = Date.now() - new Date(this.client.dob).getTime();
+      var age_dt = new Date(diff_ms);
+      const age = Math.abs(age_dt.getUTCFullYear() - 1970);
+      this.client.age = age;
     });
   }
 

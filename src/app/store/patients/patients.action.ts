@@ -12,6 +12,16 @@ export namespace PatientsAction {
 
   export class updatePatients {
     static readonly type = '[Patients] updatePatients';
-    constructor(public payload: any, public id: string) {}
-}
+    constructor(public payload: PatientsModel, public id: string) {}
+  }
+
+  export class getSearchedClients {
+    static readonly type = '[Patients] getSearchedClients';
+    constructor(public payload: string) {}
+  }
+
+  export class deletePatients {
+    static readonly type = '[Patients] deletePatients';
+    constructor(public id: string) {}
+  }
 }

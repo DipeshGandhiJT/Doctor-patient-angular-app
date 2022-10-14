@@ -3,7 +3,7 @@
     {
       "id": 1,
       "name": "Yash",
-      "age": "40",
+      "dob": "1990-02-02",
       "phoneNumber": "4578546697",
       "location": "Surat",
       "gender": "Male",
@@ -12,27 +12,30 @@
         {
           "date": "2021-12-05",
           "illness": "Dengue",
+          "illnessDescription": "Had high fever. Diagnosed with dengue. Took 6 dose of bottles and cured successfully.",
           "prescription": "Amlodipine",
-          "description": "Had high fever. Diagnosed with dengue. Took 6 dose of bottles and cured successfully."
+          "pDescription": ""
         },
         {
           "date": "2022-10-06",
           "illness": "Viral fever",
+          "illnessDescription": "Diagnosed with cold, cough and low fever",
           "prescription": "Azithromycin",
-          "description": "Diagnosed with cold, cough and low fever"
+          "pDescription": ""
         },
         {
           "date": "2022-06-05",
           "illness": "Viral fever",
+          "illnessDescription": "Diagnosed with cold and low fever",
           "prescription": "Azithromycin",
-          "description": "Diagnosed with cold and low fever"
+          "pDescription": ""
         }
       ]
     },
     {
       "id": 2,
       "name": "Parth",
-      "age": "25",
+      "dob": "1994-05-06",
       "phoneNumber": "7546258852",
       "location": "Navsari",
       "gender": "Male",
@@ -41,33 +44,36 @@
         {
           "date": "2021-11-20",
           "illness": "Typhoid",
-          "prescription": "Amitriptyline",
-          "description": ""
+          "illnessDescription": "",
+          "illnessPprescription": "mitriptyline"
         },
         {
           "date": "2022-02-05",
           "illness": "Viral fever",
+          "illnessDescription": "Diagnosed with cold and low fever",
           "prescription": "Azithromycin",
-          "description": "Diagnosed with cold and low fever"
+          "pDescription": ""
         },
         {
           "date": "2022-08-14",
           "illness": "Diarrhea",
+          "illnessDescription": "Stomach ache",
           "prescription": "Ibuprofen",
-          "description": "Stomach ache"
+          "pDescription": ""
         },
         {
           "date": "2022-10-11",
           "illness": "Viral fever",
+          "illnessDescription": "Diagnosed with cold and low fever",
           "prescription": "Azithromycin",
-          "description": "Diagnosed with cold and low fever"
+          "pDescription": ""
         }
       ]
     },
     {
       "id": 3,
       "name": "Rahul",
-      "age": "27",
+      "dob": "1994-01-02",
       "phoneNumber": "789456123",
       "location": "Nasik",
       "gender": "Male",
@@ -76,21 +82,23 @@
         {
           "date": "2021-12-05",
           "illness": "Dengue",
-          "prescription": "Amlodipine",
-          "description": ""
+          "illnessDescription": "",
+          "prescription": "mlodipine",
+          "pDescription": ""
         },
         {
           "date": "2022-06-10",
           "illness": "Viral fever",
+          "illnessDescription": "Diagnosed with cold and low fever",
           "prescription": "Azithromycin",
-          "description": "Diagnosed with cold and low fever"
+          "pDescription": ""
         }
       ]
     },
     {
       "id": 4,
       "name": "Rohan",
-      "age": "25",
+      "dob": "1996-05-05",
       "phoneNumber": "956842137",
       "location": "Baroda",
       "gender": "Male",
@@ -99,21 +107,21 @@
         {
           "date": "2021-12-05",
           "illness": "Typhoid",
-          "prescription": "Amitriptyline",
-          "description": ""
+          "illnessDescription": "",
+          "illnessPprescription": "mitriptyline"
         },
         {
           "date": "2022-10-06",
           "illness": "Diarrhea",
-          "prescription": "Ibuprofen",
-          "description": ""
+          "illnessDescription": "",
+          "illnessPprescription": "buprofen"
         }
       ]
     },
     {
       "id": 5,
       "name": "Mary",
-      "age": "26",
+      "dob": "1995-11-05",
       "phoneNumber": "7485961230",
       "location": "Nasik",
       "gender": "Female",
@@ -122,21 +130,22 @@
         {
           "date": "2021-12-05",
           "illness": "Typhoid",
-          "prescription": "Amitriptyline",
-          "description": ""
+          "illnessDescription": "",
+          "illnessPprescription": "mitriptyline"
         },
         {
           "date": "2022-10-06",
           "illness": "Viral fever",
+          "illnessDescription": "Diagnosed with cold and low fever",
           "prescription": "Azithromycin",
-          "description": "Diagnosed with cold and low fever"
+          "pDescription": ""
         }
       ]
     },
     {
       "id": 6,
       "name": "John",
-      "age": "20",
+      "dob": "1998-10-10",
       "phoneNumber": "95175364285",
       "location": "Surat",
       "gender": "Male",
@@ -145,21 +154,22 @@
         {
           "date": "2021-12-05",
           "illness": "Dengue",
-          "prescription": "Amlodipine",
-          "description": ""
+          "illnessDescription": "",
+          "illnessPprescription": "mlodipine"
         },
         {
           "date": "2022-10-06",
           "illness": "Viral fever",
+          "illnessDescription": "Diagnosed with cold and low fever",
           "prescription": "Azithromycin",
-          "description": "Diagnosed with cold and low fever"
+          "pDescription": ""
         }
       ]
     },
     {
       "id": 7,
       "name": "David",
-      "age": "32",
+      "dob": "2000-10-14",
       "phoneNumber": "42588546697",
       "location": "Valsad",
       "gender": "Male",
@@ -168,14 +178,15 @@
         {
           "date": "2021-12-06",
           "illness": "Typhoid",
-          "prescription": "Amitriptyline",
-          "description": ""
+          "illnessDescription": "",
+          "illnessPprescription": "mitriptyline"
         },
         {
           "date": "2022-10-10",
           "illness": "Viral fever",
+          "illnessDescription": "Diagnosed with cold and low fever",
           "prescription": "Azithromycin",
-          "description": "Diagnosed with cold and low fever"
+          "pDescription": ""
         }
       ]
     },
@@ -186,7 +197,6 @@
       "gender": "option1",
       "email": "robert@gmail.com",
       "phoneNumber": 7898562254,
-      "age": 22,
       "id": 8
     },
     {
@@ -196,14 +206,14 @@
       "gender": "option1",
       "email": "sam@gmail.com",
       "phoneNumber": 7548546652,
-      "age": 22,
       "id": 9,
       "consulting": [
         {
           "date": "2022-10-11",
           "illness": "Cough",
+          "illnessDescription": "Diagnosed with cold and cough",
           "prescription": "Azithromycin",
-          "description": "Diagnosed with cold and cough"
+          "pDescription": ""
         }
       ]
     }

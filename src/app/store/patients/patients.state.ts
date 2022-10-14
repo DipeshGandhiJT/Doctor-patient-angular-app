@@ -8,6 +8,7 @@ import { PatientsAction, PatientsModel } from 'src/app/store/patients';
 export interface PatientStateModel {
   loader: boolean | false;
   patients: PatientsModel[] | undefined;
+  searchedText: string;
 }
 
 const baseURL = "http://localhost:3000/clients";
@@ -16,6 +17,7 @@ const baseURL = "http://localhost:3000/clients";
   defaults: {
     loader: false,
     patients: undefined,
+    searchedText: ""
   },
 })
 @Injectable()
@@ -25,6 +27,23 @@ export class PatientsState {
   @Selector()
   static getPatients(state: PatientsModel) {
     return state["patients"];
+  }
+
+  @Selector()
+  static searchClients(state: any) {
+    return state["searchedText"];
+  }
+
+  @Action(PatientsAction.getSearchedClients)
+  getSearchedClients({
+    getState,
+    setState,
+    patchState,
+  }: StateContext<PatientStateModel>,
+  { payload }: PatientsAction.getSearchedClients
+  ) {
+    const state = getState();
+    return patchState({ ...state, searchedText: payload });
   }
 
   @Action(PatientsAction.getAllPatients)
@@ -73,7 +92,7 @@ export class PatientsState {
   }
 
   @Action(PatientsAction.updatePatients)
-  updateFacility(
+  updatePatients(
     { getState, setState, patchState }: StateContext<PatientsModel>,
     { payload, id }: PatientsAction.updatePatients
   ) {
@@ -91,4 +110,25 @@ export class PatientsState {
       })
     );
   }
+
+  @Action(PatientsAction.deletePatients)
+  deletePatients(
+    { getState, setState, patchState }: StateContext<PatientsModel>,
+    { id }: PatientsAction.deletePatients
+  ) {
+    const state = getState();
+    return this.http.delete(baseURL + `/${id}`).pipe(
+      tap({
+        next: (res: any) => {
+          if (res) {
+            this.store.dispatch(PatientsAction.getAllPatients);
+          }
+        },
+        error: (err: any) => {
+          patchState({ ...state, loader: false });
+        },
+      })
+    );
+  }
+
 }

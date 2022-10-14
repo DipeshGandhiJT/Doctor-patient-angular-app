@@ -89,4 +89,16 @@ export class PatientDetailsComponent implements OnInit {
     this.consultingForm.reset();
   }
 
+  editRecord(payload: any) {
+    // Open form dialog with edited data entered
+    // this.store.dispatch(new PatientsAction.updatePatients(payload, payload.id));
+  }
+
+  deleteRecord(payload: any, client: any) {
+    const consulting = client?.consulting || [];
+    const index = consulting?.findIndex((i: any) => new Date(payload.date).getTime() == new Date(i.date).getTime())
+    consulting.splice(index, 1);
+    client.consulting = consulting;
+    this.store.dispatch(new PatientsAction.updatePatients(client, client.id));
+  }
 }

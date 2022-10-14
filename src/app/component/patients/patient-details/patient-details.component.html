@@ -40,8 +40,8 @@
         <td>{{ item.illness }}</td>
         <td>{{ item.prescription }}</td>
         <td class="actions-icons">
-          <i class="bi bi-pencil-fill"></i>
-          <i class="bi bi-trash-fill"></i>
+          <i class="bi bi-pencil-fill" style="cursor: pointer;" (click)="editRecord(client)"></i>
+          <i class="bi bi-trash-fill" style="cursor: pointer;" (click)="deleteRecord(item, client)"></i>
           <button pButton class="p-button" (click)="openDetails(item)">
             View consulting
           </button>

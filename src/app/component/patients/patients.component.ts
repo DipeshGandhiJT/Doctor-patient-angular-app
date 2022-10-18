@@ -33,6 +33,7 @@ export class PatientsComponent implements OnInit {
   searchedText: string = "";
   clients: Client[] = [];
   clientForm: FormGroup | any;
+  recordId: any;
 
   @Select(PatientsState.getPatients) getAllClient$:
     | Observable<PatientsModel[]>
@@ -78,7 +79,6 @@ export class PatientsComponent implements OnInit {
           const age = Math.abs(age_dt.getUTCFullYear() - 1970);
           item.age = age;
         });
-        console.log("data==", data);
         this.clients = data;
       });
   }
@@ -104,9 +104,16 @@ export class PatientsComponent implements OnInit {
     this.router.navigate([`/clients/${id}`]);
   }
 
+  openEditModal(item: any, payload: any) {
+    this.modalService.open(item, { ariaLabelledBy: "modal-basic-title" });
+    this.recordId = payload.id;
+    this.editRecord(payload);
+  }
+  
   editRecord(payload: any) {
     // Open form dialog with edited data entered
-    // this.store.dispatch(new PatientsAction.updatePatients(payload, payload.id));
+    this.clientForm.patchValue(payload);
+    // this.store.dispatch(new PatientsAction.updatePatients(this.clientForm.value, this.clientForm.value.id));
   }
 
   deleteRecord(id: any) {

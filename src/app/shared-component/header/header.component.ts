@@ -10,7 +10,7 @@ export class HeaderComponent implements OnInit, OnChanges {
 
   @Input() visibleSidebar: boolean = true;
   @Output() showSidebar = new EventEmitter();
-  showSearchBar: boolean = false;
+  showSearchBar: boolean = true;
   searchedText: string = "";
   @Output() changeText = new EventEmitter();
 
@@ -19,8 +19,8 @@ export class HeaderComponent implements OnInit, OnChanges {
   ) {}
 
   ngOnInit(): void {
-    if(this.router.url.includes('clients') || this.router.url.includes('consulting')) {
-      this.showSearchBar = true;
+    if(this.router.url == '/dashboard' || this.router.url.includes('clients/consulting')) {
+      this.showSearchBar = false;
     }
   }
 

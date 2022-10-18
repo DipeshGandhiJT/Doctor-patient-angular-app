@@ -34,6 +34,7 @@ export class PatientDetailsComponent implements OnInit {
   | Observable<PatientsModel[]>
   | undefined;
   private destroyed$: ReplaySubject<boolean> = new ReplaySubject(1);
+  recordId: any;
 
   constructor(
     public translate: TranslateService,
@@ -89,7 +90,14 @@ export class PatientDetailsComponent implements OnInit {
     this.consultingForm.reset();
   }
 
+  openEditModal(item: any, payload: any) {
+    this.modalService.open(item, { ariaLabelledBy: "modal-basic-title" });
+    this.recordId = payload.id;
+    this.editRecord(payload);
+  }
+
   editRecord(payload: any) {
+    this.consultingForm.patchValue(payload);
     // Open form dialog with edited data entered
     // this.store.dispatch(new PatientsAction.updatePatients(payload, payload.id));
   }

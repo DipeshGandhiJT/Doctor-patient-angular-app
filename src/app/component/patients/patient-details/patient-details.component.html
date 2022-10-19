@@ -40,7 +40,7 @@
         <td>{{ item.illness }}</td>
         <td>{{ item.prescription }}</td>
         <td class="actions-icons">
-          <i class="bi bi-pencil-fill" style="cursor: pointer;" (click)="openEditModal(content, client)"></i>
+          <i class="bi bi-pencil-fill" style="cursor: pointer;" (click)="openEditModal(content, item)"></i>
           <i class="bi bi-trash-fill" style="cursor: pointer;" (click)="deleteRecord(item, client)"></i>
           <button pButton class="p-button" (click)="openDetails(item)">
             View consulting
@@ -53,7 +53,7 @@
   <!-- Form modal to add consulting details-->
   <ng-template #content let-modal>
     <div class="modal-header">
-      <h4 class="modal-title" id="modal-basic-title">{{recordId ? "Edit Consulting details" : "Add Consulting details"}}</h4>
+      <h4 class="modal-title" id="modal-basic-title">{{isEditModal ? "Edit Consulting details" : "Add Consulting details"}}</h4>
       <button
         type="button"
         class="btn-close"

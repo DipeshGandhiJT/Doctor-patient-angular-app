@@ -29,12 +29,12 @@ export class PatientDetailsComponent implements OnInit {
   searchedText: string = "";
   consultingForm: FormGroup | any;
   client: any = {};
+  isEditModal: boolean = false;
   // quillConfiguration = QuillConfiguration
   @Select(PatientsState.getPatients) getAllClient$:
   | Observable<PatientsModel[]>
   | undefined;
   private destroyed$: ReplaySubject<boolean> = new ReplaySubject(1);
-  recordId: any;
 
   constructor(
     public translate: TranslateService,
@@ -61,11 +61,7 @@ export class PatientDetailsComponent implements OnInit {
     this.getAllClient$?.pipe(takeUntil(this.destroyed$), distinctUntilChanged())
     .subscribe((data: any) => {
       const id: any = this.activatedRoute.snapshot.paramMap.get('id');
-      this.client = data?.filter((d: any) => d.id == id)[0];
-      var diff_ms = Date.now() - new Date(this.client.dob).getTime();
-      var age_dt = new Date(diff_ms);
-      const age = Math.abs(age_dt.getUTCFullYear() - 1970);
-      this.client.age = age;
+      this.client = data?.filter((d: any) => d.id == id)[0] || {};
     });
   }
 
@@ -76,14 +72,24 @@ export class PatientDetailsComponent implements OnInit {
   }
 
   open(item: any) {
+    this.isEditModal = false;
+    this.resetDetails();
     this.modalService.open(item, { ariaLabelledBy: "modal-basic-title" });
   }
 
   submitDetails() {
     let payload: any = this.consultingForm.value || {};
-    const consult = [ ...this.client?.consulting || [], payload];
-    const client = { ...this.client, consulting: consult };
-    this.store.dispatch(new PatientsAction.updatePatients(client, client.id));
+    if(this.isEditModal) {
+      const consulting = this.client?.consulting || [];
+      const index = consulting?.findIndex((i: any) => new Date(payload.date).getTime() == new Date(i.date).getTime());
+      consulting[index] = payload;
+      const client = { ...this.client, consulting };
+      this.store.dispatch(new PatientsAction.updatePatients(client, client.id));
+    } else {
+      const consult = [ ...this.client?.consulting || [], payload];
+      const client = { ...this.client, consulting: consult };
+      this.store.dispatch(new PatientsAction.updatePatients(client, client.id));
+    }
   }
 
   resetDetails() {
@@ -91,15 +97,11 @@ export class PatientDetailsComponent implements OnInit {
   }
 
   openEditModal(item: any, payload: any) {
+    this.isEditModal = false;
+    this.resetDetails();
     this.modalService.open(item, { ariaLabelledBy: "modal-basic-title" });
-    this.recordId = payload.id;
-    this.editRecord(payload);
-  }
-
-  editRecord(payload: any) {
     this.consultingForm.patchValue(payload);
-    // Open form dialog with edited data entered
-    // this.store.dispatch(new PatientsAction.updatePatients(payload, payload.id));
+    this.isEditModal = true;
   }
 
   deleteRecord(payload: any, client: any) {

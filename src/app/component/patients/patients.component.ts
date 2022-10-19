@@ -84,6 +84,8 @@ export class PatientsComponent implements OnInit {
   }
 
   open(item: any) {
+    this.recordId = null;
+    this.resetDetails();
     this.modalService.open(item, { ariaLabelledBy: "modal-basic-title" });
   }
 
@@ -93,7 +95,12 @@ export class PatientsComponent implements OnInit {
 
   submitDetails() {
     const payload = this.clientForm.value;
-    this.store.dispatch(new PatientsAction.addPatients(payload));
+    if(this.recordId) {
+      payload.id = this.recordId;
+    this.store.dispatch(new PatientsAction.updatePatients(payload, payload.id));
+    } else {
+      this.store.dispatch(new PatientsAction.addPatients(payload));
+    }
   }
 
   resetDetails() {
@@ -105,15 +112,11 @@ export class PatientsComponent implements OnInit {
   }
 
   openEditModal(item: any, payload: any) {
+    this.recordId = null;
+    this.resetDetails();
     this.modalService.open(item, { ariaLabelledBy: "modal-basic-title" });
     this.recordId = payload.id;
-    this.editRecord(payload);
-  }
-  
-  editRecord(payload: any) {
-    // Open form dialog with edited data entered
     this.clientForm.patchValue(payload);
-    // this.store.dispatch(new PatientsAction.updatePatients(this.clientForm.value, this.clientForm.value.id));
   }
 
   deleteRecord(id: any) {

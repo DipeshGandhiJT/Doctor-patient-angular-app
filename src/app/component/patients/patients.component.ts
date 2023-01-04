@@ -10,7 +10,7 @@ import {
   takeUntil,
 } from "rxjs";
 
-import { PatientsAction, PatientsModel, PatientsState } from 'src/app/store/patients';
+import { PatientsAction, PatientsModel, PatientsState } from '../../store/patients';
 
 interface Client {
   id: number;

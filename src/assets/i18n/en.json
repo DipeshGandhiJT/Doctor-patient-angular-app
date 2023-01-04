@@ -4,5 +4,8 @@
     "clients": "Clients",
     "client": "Client",
     "consulting": "Consulting"
+  },
+  "login" : {
+    "submitButton" : "Login"
   }
 }

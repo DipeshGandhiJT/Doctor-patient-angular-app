@@ -1,0 +1,7 @@
+{
+  "name": "Doctor-patient-App",
+  "version": "11.2.0",
+  "main": "main.js",
+  "private": true,
+  "dependencies": {}
+}

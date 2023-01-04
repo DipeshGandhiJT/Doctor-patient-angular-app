@@ -6,7 +6,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { Select, Store } from '@ngxs/store';
 import { distinctUntilChanged, Observable, ReplaySubject, takeUntil } from 'rxjs';
 
-import { PatientsAction, PatientsModel, PatientsState } from 'src/app/store/patients';
+import { PatientsAction, PatientsModel, PatientsState } from '../../../store/patients';
 
 // export const QuillConfiguration = {
 //   toolbar: [

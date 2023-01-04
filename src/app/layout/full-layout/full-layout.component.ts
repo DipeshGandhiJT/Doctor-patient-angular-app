@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngxs/store';
 
-import { PatientsAction } from 'src/app/store/patients';
+import { PatientsAction } from '../../store/patients';
 
 @Component({
   selector: 'app-full-layout',

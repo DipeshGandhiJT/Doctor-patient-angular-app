@@ -82,6 +82,25 @@ export class AutenticationState {
     }
   }
 
+  @Action(AutenticationAction.Logout)
+  doLogout(
+    { getState, setState, patchState, dispatch }: StateContext<AutenticationStateModel>
+  ){
+    const state = getState();
+    patchState({ ...state, loader: true });
+      let obj = {
+        loader: false ,
+        isLoggedIn : false,
+        userData : undefined
+      };
+      patchState({ ...state,  ...obj });
+      this.messageService.add({
+        severity: "success",
+        summary: "Success",
+        detail: "Logged out Successfully.",
+      });
+  }
+
 
   // @Action(AutenticationAction.Login)
   // getAllPatients(

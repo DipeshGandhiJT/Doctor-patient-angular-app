@@ -7,4 +7,9 @@ export namespace AutenticationAction {
     constructor(public payload: AutneticationModel) {}
   }
 
+  export class Logout {
+    static readonly type = "[Autentication] Logout";
+    constructor() {}
+  }
+
 }

@@ -1,5 +1,7 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges }  from '@angular/core';
 import { Router } from '@angular/router';
+import { Store } from '@ngxs/store';
+import { AutenticationAction } from 'app/store/authorization';
 
 @Component({
   selector: 'app-header',
@@ -15,7 +17,8 @@ export class HeaderComponent implements OnInit, OnChanges {
   @Output() changeText = new EventEmitter();
 
   constructor(
-    private router: Router
+    private router: Router,
+    public store : Store,
   ) {}
 
   ngOnInit(): void {
@@ -35,5 +38,11 @@ export class HeaderComponent implements OnInit, OnChanges {
 
   onShowSidebarClick() {
     this.showSidebar.emit();
+  }
+
+  doLogout() {
+    localStorage.removeItem("isUserAuthenticated");
+    this.store.dispatch(new AutenticationAction.Logout());
+    this.router.navigate(['/login']); 
   }
 }

@@ -31,9 +31,9 @@ private destroyed$: ReplaySubject<boolean> = new ReplaySubject(1);
     this.initForm();
     this.isUserLoggedIn$?.pipe(takeUntil(this.destroyed$), distinctUntilChanged())
     .subscribe((data: any) => {
-        console.log("Subscribe method called..");
-        if(data.isLoggedIn) {
-          this.router.navigate(['/login']); 
+        localStorage.setItem("isUserAuthenticated", data);
+        if(data) {         
+          this.router.navigate(['/dashboard']); 
         }
     });
   }

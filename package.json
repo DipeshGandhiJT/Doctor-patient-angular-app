@@ -1,5 +1,6 @@
 {
   "name": "doctor-patient-app",
+  "version": "0.0.1",
   "keywords": [
     "angular",
     "angular 14",
@@ -19,7 +20,7 @@
   "scripts": {
     "postinstall": "electron-builder install-app-deps",
     "ng": "ng",
-    "start": "npm-run-all -p electron:serve ng:serve",
+    "start": "electron-forge start",
     "ng:serve": "ng serve -c web -o",
     "build": "npm run electron:serve-tsc && ng build --base-href ./",
     "build:dev": "npm run build -- -c dev",
@@ -34,7 +35,9 @@
     "test:watch": "ng test",
     "e2e": "npm run build:prod && playwright test -c e2e/playwright.config.ts e2e/",
     "e2e:show-trace": "playwright show-trace e2e/tracing/trace.zip",
-    "lint": "ng lint"
+    "lint": "ng lint",
+    "package": "electron-forge package",
+    "make": "electron-forge make"
   },
   "dependencies": {
     "@angular/animations": "15.0.4",
@@ -58,9 +61,9 @@
     "bootstrap-icons": "1.10.2",
     "dexie": "^3.2.2",
     "electron": "21.2.3",
-    "electron-builder": "23.6.0",
     "electron-debug": "3.2.0",
     "electron-reloader": "1.2.3",
+    "electron-squirrel-startup": "^1.0.0",
     "ng2-search-filter": "0.5.1",
     "ngx-indexed-db": "^11.0.2",
     "popper.js": "1.16.1",
@@ -82,6 +85,11 @@
     "@angular/cli": "14.2.6",
     "@angular/compiler-cli": "14.2.6",
     "@angular/localize": "14.2.6",
+    "@electron-forge/cli": "^6.0.4",
+    "@electron-forge/maker-deb": "^6.0.4",
+    "@electron-forge/maker-rpm": "^6.0.4",
+    "@electron-forge/maker-squirrel": "^6.0.4",
+    "@electron-forge/maker-zip": "^6.0.4",
     "@ngx-translate/core": "14.0.0",
     "@ngx-translate/http-loader": "7.0.0",
     "@ngxs/devtools-plugin": "^3.7.6",
@@ -93,7 +101,6 @@
     "@typescript-eslint/parser": "5.40.0",
     "conventional-changelog-cli": "2.2.2",
     "electron": "21.2.3",
-    "electron-builder": "23.6.0",
     "electron-debug": "3.2.0",
     "electron-reloader": "1.2.3",
     "eslint": "8.25.0",
